@@ -376,7 +376,101 @@
     </footer>
   </div>
   
+  
   <script src="js/main.js"></script>
   <script src="js/cart.js"></script>
+
+<!-- Modal de métodos de pago -->
+<div id="payment-modal" class="modal hidden">
+  <div class="modal-content">
+    <span class="close-button">&times;</span>
+    <h2>Selecciona tu método de pago</h2>
+    <form id="payment-form">
+  <div class="payment-options">
+    <label>
+      <input type="radio" name="payment-method" value="Visa" required>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" width="100">
+    </label>
+    <label>
+      <input type="radio" name="payment-method" value="MasterCard">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="MasterCard" width="100">
+    </label>
+    <label>
+      <input type="radio" name="payment-method" value="Nequi">
+      <img src="https://images.seeklogo.com/logo-png/40/1/nequi-logo-png_seeklogo-404357.png" alt="Nequi" width="100">
+    </label>
+  </div>
+  <button type="submit" class="confirm-payment">Confirmar Pago</button>
+</form>
+
+  </div>
+</div>
+
+<!-- Segundo Modal: Simulación de pago -->
+<div id="payment-simulation" class="modal hidden">
+  <div class="modal-content">
+    <span class="sim-close-button">&times;</span>
+    <div class="sim-message">Procesando pago...</div>
+    <div class="sim-animation">
+      <div class="spinner"></div> <!-- Spinner inicial -->
+      <svg class="checkmark hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+        <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none"/>
+        <path class="checkmark-check" fill="none" d="M14 27l7 7 16-16"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+  // Abrir modal de métodos de pago
+  document.querySelector('.checkout-button').addEventListener('click', function () {
+    document.getElementById('payment-modal').classList.remove('hidden');
+  });
+
+  // Cerrar modal de métodos de pago
+  document.querySelector('.close-button').addEventListener('click', function () {
+    document.getElementById('payment-modal').classList.add('hidden');
+  });
+
+  // Selección al hacer clic en la imagen
+  document.querySelectorAll('#payment-form label img').forEach(img => {
+    img.addEventListener('click', () => {
+      const radio = img.previousElementSibling;
+      radio.checked = true;
+    });
+  });
+
+  // Al confirmar método de pago
+  document.getElementById('payment-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const metodo = document.querySelector('input[name="payment-method"]:checked').value;
+
+    // Cierra el primer modal
+    document.getElementById('payment-modal').classList.add('hidden');
+
+    // Muestra simulación de pago
+const simulacion = document.getElementById('payment-simulation');
+simulacion.querySelector(".sim-message").innerText = `Procesando pago con ${metodo}...`;
+simulacion.querySelector(".spinner").classList.remove('hidden');
+simulacion.querySelector(".checkmark").classList.add('hidden');
+simulacion.classList.remove('hidden');
+
+// Simula éxito después de 2 segundos
+setTimeout(() => {
+  simulacion.querySelector(".sim-message").innerText = `✅ Pago con ${metodo} exitoso 🎉`;
+  simulacion.querySelector(".spinner").classList.add('hidden');
+  simulacion.querySelector(".checkmark").classList.remove('hidden');
+}, 2000);
+
+  });
+
+  // Cerrar modal de simulación
+  document.querySelector('.sim-close-button').addEventListener('click', function () {
+    document.getElementById('payment-simulation').classList.add('hidden');
+  });
+</script>
+  
 </body>
 </html>
