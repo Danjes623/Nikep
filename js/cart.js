@@ -194,4 +194,25 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
+function updateCartCount() {
+  const cartCount = document.getElementById('cart-count');
+  if (!cartCount) return;
+
+  const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+  cartCount.textContent = totalQuantity;
+}
+
+function updateCart() {
+  localStorage.setItem('cart', JSON.stringify(cart));
+  updateCartDisplay();
+  updateCartTotal();
+  updateCartCount(); // <-- Agregado aquí
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  updateCartDisplay();
+  updateCartTotal();
+  updateCartCount(); // <-- Agregado aquí
+});
+
  
