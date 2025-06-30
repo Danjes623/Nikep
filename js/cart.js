@@ -18,6 +18,7 @@ function addToCart(product) {
   } else {
     cart.push(product);
   }
+}
 
   updateCart();
 showNotification(message) 
@@ -31,7 +32,7 @@ showNotification(message)
 
 
 
-}
+
 
 function removeFromCart(index) {
   cart.splice(index, 1);
