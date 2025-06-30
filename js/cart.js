@@ -194,13 +194,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Enviar formulario de pago simulado
-document.getElementById('payment-form').addEventListener('submit', function (e) {
-  e.preventDefault();
-  const metodo = document.querySelector('input[name="payment-method"]:checked').value;
-  alert(`✅ Pago simulado realizado con ${metodo}`);
-  document.getElementById('payment-modal').classList.add('hidden');
-});
+
 
 
  
