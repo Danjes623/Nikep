@@ -442,35 +442,43 @@
     });
   });
 
-  // Al confirmar método de pago
-  document.getElementById('payment-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    const metodo = document.querySelector('input[name="payment-method"]:checked').value;
+ // Enviar formulario de pago simulado
+document.getElementById('payment-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+  const metodo = document.querySelector('input[name="payment-method"]:checked').value;
 
-    // Cierra el primer modal
-    document.getElementById('payment-modal').classList.add('hidden');
+  // Simula procesamiento
+  const simulacion = document.getElementById('payment-simulation');
+  simulacion.querySelector(".sim-message").innerText = `Procesando pago con ${metodo}...`;
+  simulacion.querySelector(".spinner").classList.remove('hidden');
+  simulacion.querySelector(".checkmark").classList.add('hidden');
+  simulacion.classList.remove('hidden');
+  document.getElementById('payment-modal').classList.add('hidden');
 
-    // Muestra simulación de pago
-const simulacion = document.getElementById('payment-simulation');
-simulacion.querySelector(".sim-message").innerText = `Procesando pago con ${metodo}...`;
-simulacion.querySelector(".spinner").classList.remove('hidden');
-simulacion.querySelector(".checkmark").classList.add('hidden');
-simulacion.classList.remove('hidden');
+  // Simula pago y luego limpia el carrito
+  setTimeout(() => {
+    simulacion.querySelector(".spinner").classList.add('hidden');
+    simulacion.querySelector(".checkmark").classList.remove('hidden');
+    simulacion.querySelector(".sim-message").innerText = `✅ Pago con ${metodo} exitoso 🎉`;
 
-// Simula éxito después de 2 segundos
-setTimeout(() => {
-  simulacion.querySelector(".sim-message").innerText = `✅ Pago con ${metodo} exitoso 🎉`;
-  simulacion.querySelector(".spinner").classList.add('hidden');
-  simulacion.querySelector(".checkmark").classList.remove('hidden');
-}, 2000);
+    // Vaciar carrito
+    cart = [];
+    updateCart();
 
-  });
+    // Ocultar modal de simulación después de unos segundos
+    setTimeout(() => {
+      simulacion.classList.add('hidden');
+    }, 2000);
+  }, 2000);
+});
+
 
   // Cerrar modal de simulación
   document.querySelector('.sim-close-button').addEventListener('click', function () {
     document.getElementById('payment-simulation').classList.add('hidden');
   });
 </script>
+
   
 </body>
 </html>
