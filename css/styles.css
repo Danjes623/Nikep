@@ -551,3 +551,260 @@ p {
   }
 }
 
+/* Fondo oscurecido */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+/* Contenedor del mensaje */
+.custom-modal {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  text-align: center;
+  max-width: 320px;
+  font-family: sans-serif;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Botones */
+.custom-modal button {
+  margin: 10px 10px 0;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.custom-modal button.accept {
+  background-color: #000;
+  color: white;
+}
+
+.custom-modal button.cancel {
+  background-color: #eee;
+  color: #000;
+}
+
+.custom-modal button.accept:hover {
+  background-color: #222;
+}
+
+.custom-modal button.cancel:hover {
+  background-color: #ccc;
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+#cart-count.animate {
+  animation: bounce 0.5s ease;
+}
+
+/* Estilos del modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  position: relative;
+}
+
+.modal-content img {
+  margin: 10px;
+  vertical-align: middle;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.confirm-payment {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  position: relative;
+}
+
+.modal-content img {
+  margin: 10px;
+  vertical-align: middle;
+}
+
+.close-button, .sim-close-button {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.confirm-payment {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.payment-options {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.payment-options label {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.payment-options label:hover {
+  transform: scale(1.05);
+}
+
+.payment-options input {
+  display: none; /* Oculta los círculos */
+}
+
+.payment-options input:checked + img {
+  border: 3px solid #000;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+.sim-animation {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+}
+
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid black;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Checkmark animation */
+.checkmark {
+  width: 60px;
+  height: 60px;
+  stroke: #4caf50;
+  stroke-width: 5;
+  stroke-miterlimit: 10;
+  stroke-linecap: round;
+  animation: scale .3s ease-in-out forwards;
+}
+
+.checkmark-circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  animation: stroke 0.6s ease-in-out forwards;
+}
+
+.checkmark-check {
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke-check 0.3s 0.6s ease forwards;
+}
+
+@keyframes stroke {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes stroke-check {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes scale {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.hidden {
+  display: none;
+}
+
+
