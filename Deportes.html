@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zapatillas para Hombre - Nike</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/products.css">
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-top">
+        <div class="container header-top-container">
+          <div class="header-top-links">
+            <a href="#">Eventos</a>
+            <a href="#">Ayuda</a>
+            <a href="#">Regístrate</a>
+            <a href="#">Buscar Tiendas</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="header-main">
+        <div class="container header-main-container">
+          <div class="logo">
+            <a href="index.html">
+              <svg class="nike-logo" aria-hidden="true" focusable="false" viewBox="0 0 24 24" role="img" width="24px" height="24px" fill="none">
+                <path fill="currentColor" fill-rule="evenodd" d="M21 8.719L7.836 14.303C6.74 14.768 5.818 15 5.075 15c-.836 0-1.445-.295-1.819-.884-.485-.76-.273-1.982.559-3.272.494-.754 1.122-1.446 1.734-2.108-.144.234-1.415 2.349-.025 3.345.275.2.666.298 1.147.298.386 0 .829-.063 1.316-.19L21 8.719z" clip-rule="evenodd"></path>
+              </svg>
+            </a>
+          </div>
+          
+          <nav class="main-nav">
+            <ul class="nav-list">
+              <li><a href="Novedades.html" class="nav-link">Novedades</a></li>
+              <li><a href="productos-hombre.html" class="nav-link">Hombre</a></li>
+              <li><a href="productos-mujer.html" class="nav-link">Mujer</a></li>
+              <li><a href="Productos-Niños.html" class="nav-link">Niños</a></li>
+              <li><a href="Deportes.html" class="nav-link active">Deporte</a></li>
+              <li><a href="Descuentos.html" class="nav-link">Descuentos</a></li>
+            </ul>
+          </nav>
+          
+          <div class="header-actions">
+            <div class="search-container">
+              <form class="search-form">
+                <button type="submit" class="search-button">
+                  <svg aria-hidden="true" class="search-icon" focusable="false" viewBox="0 0 24 24" role="img" width="24px" height="24px" fill="none">
+                    <path stroke="currentColor" stroke-width="1.5" d="M13.962 16.296a6.716 6.716 0 01-3.462.954 6.728 6.728 0 01-4.773-1.977A6.728 6.728 0 013.75 10.5c0-1.864.755-3.551 1.977-4.773A6.728 6.728 0 0110.5 3.75c1.864 0 3.551.755 4.773 1.977A6.728 6.728 0 0117.25 10.5a6.726 6.726 0 01-.921 3.407c-.517.882-.434 1.988.289 2.711l3.853 3.853"></path>
+                  </svg>
+                </button>
+                <input type="text" class="search-input" placeholder="Buscar">
+              </form>
+            </div>
+            
+            <a href="carrito.html" class="cart-link">
+              <svg aria-hidden="true" class="cart-icon" focusable="false" viewBox="0 0 24 24" role="img" width="24px" height="24px" fill="none">
+                <path stroke="currentColor" stroke-width="1.5" d="M8.25 8.25V6a2.25 2.25 0 012.25-2.25h3a2.25 2.25 0 012.25 2.25v2.25M3.75 9.75h16.5v10.5h-16.5V9.75z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Promotional Banner -->
+    <div class="promo-banner">
+      <div class="container">
+        <p>Envíos gratis por compras superiores a $299.900 <a href="#" class="terms-link">Términos y condiciones</a></p>
+      </div>
+    </div>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="container">
+        <div class="products-heading">
+          <h1>Nuevos Productos</h1>
+          <div class="products-controls">
+            <div class="filter-control">
+              <button id="filter-toggle" class="filter-toggle">Ocultar filtros <span class="filter-icon">⊟</span></button>
+            </div>
+            <div class="sort-control">
+              <select name="sort" id="sort-select" class="sort-select">
+                <option value="featured">Ordenar por: Destacados</option>
+                <option value="newest">Más nuevos</option>
+                <option value="price-low">Precio: Menor a mayor</option>
+                <option value="price-high">Precio: Mayor a menor</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+        <div class="products-container">
+          <!-- Sidebar Filters -->
+          <aside class="filters-sidebar" id="filters-sidebar">
+            <div class="filter-section">
+              <h3 class="filter-title">Zapatillas</h3>
+              <ul class="filter-list">
+                <li><a href="#">Camisetas y partes de arriba</a></li>
+                <li><a href="#">Pantalones cortos</a></li>
+                <li><a href="#">Pantalones y mallas</a></li>
+                <li><a href="#">Accesorios y equipamiento</a></li>
+                <li><a href="#">Chaquetas y chalecos</a></li>
+                <li><a href="#">Sudaderas con y sin capucha</a></li>
+                <li><a href="#">Chandales</a></li>
+                <li><a href="#">Calcetines</a></li>
+              </ul>
+            </div>
+            
+            <div class="filter-section">
+              <h3 class="filter-title">Sexo</h3>
+              <div class="filter-dropdown">
+                <button class="dropdown-toggle">
+                  <span>Seleccionar</span>
+                  <span class="dropdown-icon">▼</span>
+                </button>
+                <div class="dropdown-content">
+                  <label class="filter-option">
+                    <input type="checkbox" name="gender" value="men">
+                    <span>Hombre</span>
+                  </label>
+                  <label class="filter-option">
+                    <input type="checkbox" name="gender" value="women">
+                    <span>Mujer</span>
+                  </label>
+                  <label class="filter-option">
+                    <input type="checkbox" name="gender" value="unisex">
+                    <span>Unisex</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            
+            <div class="filter-section">
+              <h3 class="filter-title">Niño/a</h3>
+              <div class="filter-dropdown">
+                <button class="dropdown-toggle">
+                  <span>Seleccionar</span>
+                  <span class="dropdown-icon">▼</span>
+                </button>
+                <div class="dropdown-content">
+                  <label class="filter-option">
+                    <input type="checkbox" name="kids" value="boys">
+                    <span>Niño</span>
+                  </label>
+                  <label class="filter-option">
+                    <input type="checkbox" name="kids" value="girls">
+                    <span>Niña</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            
+            <div class="filter-section">
+              <h3 class="filter-title">Filtrar por precio</h3>
+              <div class="filter-dropdown">
+                <button class="dropdown-toggle">
+                  <span>Seleccionar</span>
+                  <span class="dropdown-icon">▼</span>
+                </button>
+                <div class="dropdown-content">
+                  <div class="price-filter">
+                    <div class="price-slider">
+                      <input type="range" min="0" max="200" value="200" class="slider" id="price-range">
+                    </div>
+                    <div class="price-values">
+                      <span>$0</span>
+                      <span>$200</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="filter-section">
+              <h3 class="filter-title">Color</h3>
+              <div class="filter-dropdown">
+                <button class="dropdown-toggle">
+                  <span>Seleccionar</span>
+                  <span class="dropdown-icon">▼</span>
+                </button>
+                <div class="dropdown-content">
+                  <div class="color-options">
+                    <label class="color-option">
+                      <input type="checkbox" name="color" value="black">
+                      <span class="color-swatch black"></span>
+                    </label>
+                    <label class="color-option">
+                      <input type="checkbox" name="color" value="white">
+                      <span class="color-swatch white"></span>
+                    </label>
+                    <label class="color-option">
+                      <input type="checkbox" name="color" value="grey">
+                      <span class="color-swatch grey"></span>
+                    </label>
+                    <label class="color-option">
+                      <input type="checkbox" name="color" value="blue">
+                      <span class="color-swatch blue"></span>
+                    </label>
+                    <label class="color-option">
+                      <input type="checkbox" name="color" value="red">
+                      <span class="color-swatch red"></span>
+                    </label>
+                    <label class="color-option">
+                      <input type="checkbox" name="color" value="green">
+                      <span class="color-swatch green"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="filter-section">
+              <h3 class="filter-title">Deportes</h3>
+              <div class="filter-dropdown">
+                <button class="dropdown-toggle">
+                  <span>Seleccionar</span>
+                  <span class="dropdown-icon">▼</span>
+                </button>
+                <div class="dropdown-content">
+                  <label class="filter-option">
+                    <input type="checkbox" name="sport" value="running">
+                    <span>Running</span>
+                  </label>
+                  <label class="filter-option">
+                    <input type="checkbox" name="sport" value="football">
+                    <span>Fútbol</span>
+                  </label>
+                  <label class="filter-option">
+                    <input type="checkbox" name="sport" value="basketball">
+                    <span>Baloncesto</span>
+                  </label>
+                  <label class="filter-option">
+                    <input type="checkbox" name="sport" value="training">
+                    <span>Training</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </aside>
+          
+          <!-- Products Grid -->
+          <div class="products-grid">
+            <h2 class="grid-title">Deporte</h2>
+            
+            <div class="products-list">
+              <div class="product-item">
+                <a href="producto-detalle.html" class="product-link">
+                  <div class="product-image">
+                    <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/b7c5e0a8-6534-4101-90b5-8adfa84cfcad/p-6000-se-zapatillas-XdKLrF.png" alt="Nike P-6000 SE">
+                  </div>
+                  <div class="product-details">
+                    <h3 class="product-name">Nike P-6000 SE</h3>
+                    <div class="product-meta">
+                      <span class="product-category">Zapatillas</span>
+                      <span class="product-colors">5 colores</span>
+                    </div>
+                    <div class="product-price">309,00 €</div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="product-item">
+                <a href="#" class="product-link">
+                  <div class="product-image">
+                    <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/a42a5d53-2f99-4e78-a081-9d07a2d0774a/air-max-plus-zapatillas-GPDrwr.png" alt="Nike Air Max Plus">
+                  </div>
+                  <div class="product-details">
+                    <h3 class="product-name">Nike Air Max Plus</h3>
+                    <div class="product-meta">
+                      <span class="product-category">Zapatillas</span>
+                      <span class="product-colors">1 color</span>
+                    </div>
+                    <div class="product-price">199,99 €</div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="product-item">
+                <a href="#" class="product-link">
+                  <div class="product-image">
+                    <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/f7981197-5846-4e06-90e4-ed9f5a467501/shox-tl-zapatillas-DPfchz.png" alt="Nike Shox TL">
+                  </div>
+                  <div class="product-details">
+                    <h3 class="product-name">Nike Shox TL</h3>
+                    <div class="product-meta">
+                      <span class="product-category">Zapatillas</span>
+                      <span class="product-colors">5 colores</span>
+                    </div>
+                    <div class="product-price">189,99 €</div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="product-item">
+                <a href="#" class="product-link">
+                  <div class="product-image">
+                    <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/70e67e2b-818b-4311-b9e5-c0f865477b42/pegasus-41-zapatillas-de-running-asfalto-hombre-CxnZSS.png" alt="Nike Pegasus 41">
+                  </div>
+                  <div class="product-details">
+                    <h3 class="product-name">Nike Pegasus 41</h3>
+                    <div class="product-meta">
+                      <span class="product-category">Zapatillas de running para asfalto - Hombre</span>
+                    </div>
+                    <div class="product-price">129,99 €</div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="product-item">
+                <a href="#" class="product-link">
+                  <div class="product-image">
+                    <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/a4584ec9-e312-418c-b5ad-432d936bc340/mercurial-vapor-xi-elite-y-air-max-95-se-botas-de-futbol-de-perfil-bajo-L3vjZ4.png" alt="Nike Mercurial Vapor XI Elite y Air Max 95 SE">
+                  </div>
+                  <div class="product-details">
+                    <h3 class="product-name">Nike Mercurial Vapor XI Elite y Air Max 95 SE</h3>
+                    <div class="product-meta">
+                      <span class="product-category">Botas de fútbol de perfil bajo</span>
+                    </div>
+                    <div class="product-price">134,97 €</div>
+                    <div class="product-original-price">179,97 €</div>
+                    <div class="product-tag">Próximamente</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+            
+            <div class="related-categories">
+              <h3>Categorías Relacionadas</h3>
+              <div class="category-tags">
+                <a href="#" class="category-tag">Superventas</a>
+                <a href="#" class="category-tag">Las Mejores Zapatillas</a>
+                <a href="#" class="category-tag">Nuevas Zapatillas de Baloncesto</a>
+                <a href="#" class="category-tag">Nuevas Botas de Fútbol</a>
+                <a href="#" class="category-tag">Nuevas Zapatillas Jordan</a>
+                <a href="#" class="category-tag">Nuevas Zapatillas de Running</a>
+                <a href="#" class="category-tag">Las Mejores Zapatillas para Hombre</a>
+                <a href="#" class="category-tag">Lo Mejor de gym y training</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-columns">
+          <div class="footer-column">
+            <h3 class="footer-title">Recursos</h3>
+            <ul class="footer-links">
+              <li><a href="#">Tarjetas de regalo</a></li>
+              <li><a href="#">Tarjetas de regalo corporativas</a></li>
+              <li><a href="#">Buscar una tienda</a></li>
+              <li><a href="#">Nike Journal</a></li>
+              <li><a href="#">Hazte Member</a></li>
+              <li><a href="#">Descuento para estudiantes</a></li>
+              <li><a href="#">Comentarios</a></li>
+              <li><a href="#">Códigos promocionales</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h3 class="footer-title">Ayuda</h3>
+            <ul class="footer-links">
+              <li><a href="#">Obtener ayuda</a></li>
+              <li><a href="#">Estado del pedido</a></li>
+              <li><a href="#">Envíos y entregas</a></li>
+              <li><a href="#">Devoluciones</a></li>
+              <li><a href="#">Opciones de pago</a></li>
+              <li><a href="#">Contacto</a></li>
+              <li><a href="#">Evaluaciones</a></li>
+              <li><a href="#">Ayuda con los códigos promocionales de Nike</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h3 class="footer-title">Empresa</h3>
+            <ul class="footer-links">
+              <li><a href="#">Acerca de Nike</a></li>
+              <li><a href="#">Novedades</a></li>
+              <li><a href="#">Empleo</a></li>
+              <li><a href="#">Inversores</a></li>
+              <li><a href="#">Sostenibilidad</a></li>
+              <li><a href="#">Accesibilidad</a></li>
+              <li><a href="#">Propósito</a></li>
+              <li><a href="#">Informar de un problema</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <div class="region-selector">
+              <a href="#" class="region-link">
+                <span class="region-icon">🌐</span>
+                <span class="region-name">España</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <div class="copyright">
+            <p>© 2025 Nike, Inc. Todos los derechos reservados</p>
+          </div>
+          
+          <div class="legal-links">
+            <a href="#">Guías</a>
+            <a href="#">Términos de uso</a>
+            <a href="#">Términos de ventas</a>
+            <a href="#">Aviso legal</a>
+            <a href="#">Política de privacidad y cookies</a>
+          </div>
+          
+          <div class="cookie-settings">
+            <a href="#">Configuración de privacidad y cookies</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  
+  <script src="js/main.js"></script>
+  <script src="js/products.js"></script>
+</body>
+</html>

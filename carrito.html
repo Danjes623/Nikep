@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito - Nike</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/cart.css">
+</head>
+<body>
+  <div class="wrapper">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-top">
+        <div class="container header-top-container">
+          <div class="header-top-links">
+            <a href="#">Eventos</a>
+            <a href="#">Ayuda</a>
+            <a href="#">Regístrate</a>
+            <a href="#">Buscar Tiendas</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="header-main">
+        <div class="container header-main-container">
+          <div class="logo">
+            <a href="index.html">
+              <svg class="nike-logo" aria-hidden="true" focusable="false" viewBox="0 0 24 24" role="img" width="24px" height="24px" fill="none">
+                <path fill="currentColor" fill-rule="evenodd" d="M21 8.719L7.836 14.303C6.74 14.768 5.818 15 5.075 15c-.836 0-1.445-.295-1.819-.884-.485-.76-.273-1.982.559-3.272.494-.754 1.122-1.446 1.734-2.108-.144.234-1.415 2.349-.025 3.345.275.2.666.298 1.147.298.386 0 .829-.063 1.316-.19L21 8.719z" clip-rule="evenodd"></path>
+              </svg>
+            </a>
+          </div>
+          
+          <nav class="main-nav">
+            <ul class="nav-list">
+              <li><a href="Novedades.html" class="nav-link">Novedades</a></li>
+              <li><a href="productos-hombre.html" class="nav-link">Hombre</a></li>
+              <li><a href="productos-mujer.html" class="nav-link">Mujer</a></li>
+              <li><a href="Productos-Niños.html" class="nav-link">Niños</a></li>
+              <li><a href="Deportes.html" class="nav-link">Deporte</a></li>
+              <li><a href="Descuentos.html" class="nav-link">Descuentos</a></li>
+            </ul>
+          </nav>
+          
+          <div class="header-actions">
+            <div class="search-container">
+              <form class="search-form">
+                <button type="submit" class="search-button">
+                  <svg aria-hidden="true" class="search-icon" focusable="false" viewBox="0 0 24 24" role="img" width="24px" height="24px" fill="none">
+                    <path stroke="currentColor" stroke-width="1.5" d="M13.962 16.296a6.716 6.716 0 01-3.462.954 6.728 6.728 0 01-4.773-1.977A6.728 6.728 0 013.75 10.5c0-1.864.755-3.551 1.977-4.773A6.728 6.728 0 0110.5 3.75c1.864 0 3.551.755 4.773 1.977A6.728 6.728 0 0117.25 10.5a6.726 6.726 0 01-.921 3.407c-.517.882-.434 1.988.289 2.711l3.853 3.853"></path>
+                  </svg>
+                </button>
+                <input type="text" class="search-input" placeholder="Buscar">
+              </form>
+            </div>
+            
+            <a href="carrito.html" class="cart-link active">
+              <svg aria-hidden="true" class="cart-icon" focusable="false" viewBox="0 0 24 24" role="img" width="24px" height="24px" fill="none">
+                <path stroke="currentColor" stroke-width="1.5" d="M8.25 8.25V6a2.25 2.25 0 012.25-2.25h3a2.25 2.25 0 012.25 2.25v2.25M3.75 9.75h16.5v10.5h-16.5V9.75z"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <!-- Promotional Banner -->
+    <div class="promo-banner">
+      <div class="container">
+        <p>Envíos gratis por compras superiores a $299.900 <a href="#" class="terms-link">Términos y condiciones</a></p>
+      </div>
+    </div>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="container">
+        <div class="cart-container">
+          <div class="member-banner">
+            <div class="banner-content">
+              <h3>Envío gratuito para miembros.</h3>
+              <p>Hazte Nike Member para conseguir envíos rápidos y gratuitos. <a href="#" class="join-link">Únete a nosotros</a> o <a href="#" class="login-link">iniciar sesión</a></p>
+            </div>
+          </div>
+          
+          <h1 class="cart-title">carrito</h1>
+          
+          <div class="cart-layout">
+            <div class="cart-items">
+              <div class="cart-item">
+                <div class="item-image">
+                  <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/12a56561-8431-4a91-8bd9-a2929ba5baad/air-force-1-07-zapatillas-GjGXSP.png" alt="Nike Field General">
+                </div>
+                
+                <div class="item-details">
+                  <div class="item-info">
+                    <h3 class="item-title">Nike Field General</h3>
+                    <div class="item-category">Zapatillas - Mujer</div>
+                    <div class="item-color">Elemental Pink/Gum Medium Brown/Obsidian</div>
+                    <div class="item-size">Talla: 43</div>
+                    <div class="item-actions">
+                      <a href="#" class="item-action-link">Opciones de regalo</a>
+                    </div>
+                  </div>
+                  
+                  <div class="item-quantity">
+                    <div class="quantity-controls">
+                      <button class="quantity-button decrease">
+                        <svg viewBox="0 0 24 24" width="24px" height="24px" fill="none">
+                          <path stroke="currentColor" stroke-width="1.5" d="M5 12h14"></path>
+                        </svg>
+                      </button>
+                      <input type="number" value="1" min="1" max="10" class="quantity-input">
+                      <button class="quantity-button increase">
+                        <svg viewBox="0 0 24 24" width="24px" height="24px" fill="none">
+                          <path stroke="currentColor" stroke-width="1.5" d="M12 5v14M5 12h14"></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  
+                  <div class="item-price">99,99 €</div>
+                  
+                  <div class="item-actions-mobile">
+                    <button class="remove-button">
+                      <svg viewBox="0 0 24 24" width="24px" height="24px" fill="none">
+                        <path stroke="currentColor" stroke-width="1.5" d="M16.5 7.5l-9 9M7.5 7.5l9 9"></path>
+                      </svg>
+                    </button>
+                    <button class="favorite-button">
+                      <svg viewBox="0 0 24 24" width="24px" height="24px" fill="none">
+                        <path stroke="currentColor" stroke-width="1.5" d="M16.794 3.75c1.324 0 2.568.516 3.504 1.451a4.96 4.96 0 010 7.008L12 20.508l-8.299-8.299a4.96 4.96 0 010-7.007A4.923 4.923 0 017.205 3.75c1.324 0 2.568.516 3.504 1.451l.76.76.531.531.53-.531.76-.76a4.926 4.926 0 013.504-1.451"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="item-pickup">
+                  <div class="pickup-info">Recogida gratuita</div>
+                  <a href="#" class="store-link">Buscar una tienda</a>
+                </div>
+              </div>
+              
+              <div class="cart-item">
+                <div class="item-image">
+                  <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/36a7ac0b-dfea-4ce9-b6c9-58b9b13a1522/air-force-1-07-lx-zapatillas-bkTs6J.png" alt="Nike Air Force 1 Low Premium">
+                </div>
+                
+                <div class="item-details">
+                  <div class="item-info">
+                    <h3 class="item-title">Nike Air Force 1 Low Premium</h3>
+                    <div class="item-category">Zapatillas - Mujer</div>
+                    <div class="item-color">Light Bone/Kelly Green/Pink Foam/Light Bone</div>
+                    <div class="item-size">Talla: 38.5</div>
+                    <div class="item-actions">
+                      <a href="#" class="item-action-link">Opciones de regalo</a>
+                    </div>
+                  </div>
+                  
+                  <div class="item-quantity">
+                    <div class="quantity-controls">
+                      <button class="quantity-button decrease">
+                        <svg viewBox="0 0 24 24" width="24px" height="24px" fill="none">
+                          <path stroke="currentColor" stroke-width="1.5" d="M5 12h14"></path>
+                        </svg>
+                      </button>
+                      <input type="number" value="1" min="1" max="10" class="quantity-input">
+                      <button class="quantity-button increase">
+                        <svg viewBox="0 0 24 24" width="24px" height="24px" fill="none">
+                          <path stroke="currentColor" stroke-width="1.5" d="M12 5v14M5 12h14"></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                  
+                  <div class="item-price">99,99 €</div>
+                  
+                  <div class="item-actions-mobile">
+                    <button class="remove-button">
+                      <svg viewBox="0 0 24 24" width="24px" height="24px" fill="none">
+                        <path stroke="currentColor" stroke-width="1.5" d="M16.5 7.5l-9 9M7.5 7.5l9 9"></path>
+                      </svg>
+                    </button>
+                    <button class="favorite-button">
+                      <svg viewBox="0 0 24 24" width="24px" height="24px" fill="none">
+                        <path stroke="currentColor" stroke-width="1.5" d="M16.794 3.75c1.324 0 2.568.516 3.504 1.451a4.96 4.96 0 010 7.008L12 20.508l-8.299-8.299a4.96 4.96 0 010-7.007A4.923 4.923 0 017.205 3.75c1.324 0 2.568.516 3.504 1.451l.76.76.531.531.53-.531.76-.76a4.926 4.926 0 013.504-1.451"></path>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                
+                <div class="item-pickup">
+                  <div class="pickup-info">Recogida gratuita</div>
+                  <a href="#" class="store-link">Buscar una tienda</a>
+                </div>
+              </div>
+            </div>
+            
+            <div class="cart-summary">
+              <div class="summary-header">
+                <h2>Resumen</h2>
+              </div>
+              
+              <div class="promo-code">
+                <div class="promo-header">
+                  <h3>¿Tienes un código promocional?</h3>
+                </div>
+                <div class="promo-form">
+                  <input type="text" class="promo-input" placeholder="Ingresa tu código">
+                  <button class="promo-button">Aplicar</button>
+                </div>
+              </div>
+              
+              <div class="summary-details">
+                <div class="summary-row">
+                  <span class="summary-label">subtotal</span>
+                  <span class="summary-value">129,99 €</span>
+                </div>
+                <div class="summary-row">
+                  <span class="summary-label">Gastos de envío y gestión estimados</span>
+                  <span class="summary-value">0 €</span>
+                </div>
+                <div class="summary-row total-row">
+                  <span class="summary-label">Total</span>
+                  <span class="summary-value">129,99 €</span>
+                </div>
+              </div>
+              
+              <div class="checkout-buttons">
+                <button class="checkout-button">Pasar por caja</button>
+                <button class="paypal-button">
+                  <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_100x26.png" alt="PayPal">
+                </button>
+              </div>
+            </div>
+          </div>
+          
+          <section class="recommended-products">
+            <div class="section-header">
+              <h2 class="section-title">También Te podría Interesar</h2>
+              <div class="slider-controls">
+                <button class="slider-control prev" data-slider="cart-recommended">
+                  <svg viewBox="0 0 24 24" width="24px" height="24px" fill="none">
+                    <path stroke="currentColor" stroke-width="1.5" d="M15.525 18.966L8.558 12l6.967-6.967"></path>
+                  </svg>
+                </button>
+                <button class="slider-control next" data-slider="cart-recommended">
+                  <svg viewBox="0 0 24 24" width="24px" height="24px" fill="none">
+                    <path stroke="currentColor" stroke-width="1.5" d="M8.474 18.966L15.44 12 8.474 5.033"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            
+            <div class="products-slider" id="cart-recommended-slider">
+              <div class="product-card">
+                <a href="/producto-detalle.html?id=shox-r4" class="product-link">
+                  <div class="product-image">
+                    <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/f7981197-5846-4e06-90e4-ed9f5a467501/shox-r4-zapatillas-qsfXpZ.png" alt="Nike Shox R4">
+                  </div>
+                  <div class="product-info">
+                    <h3 class="product-title">Nike Shox R4</h3>
+                    <div class="product-meta">Zapatillas - Mujer</div>
+                    <div class="product-price">149,99 €</div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="product-card">
+                <a href="/producto-detalle.html?id=nike-portal" class="product-link">
+                  <div class="product-image">
+                    <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/fd17b420-b388-4c8a-aaaa-e0a98ddf175f/air-max-portal-zapatillas-dkWsJd.png" alt="Nike Air Max Portal">
+                  </div>
+                  <div class="product-info">
+                    <h3 class="product-title">Nike Air Max Portal</h3>
+                    <div class="product-meta">Zapatillas - Mujer</div>
+                    <div class="product-price">93,49 €</div>
+                    <div class="product-old-price">109,99 €</div>
+                  </div>
+                </a>
+              </div>
+              
+              <div class="product-card">
+                <a href="/producto-detalle.html?id=nike-wear" class="product-link">
+                  <div class="product-image">
+                    <img src="https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/5cb21e08-c6a3-4a3d-87c1-e8eb7dab9773/sportswear-chill-knit-leggings-acompanados-con-elastico-mini-y-ajuste-cenido-mujer-NmQtc4.png" alt="Nike Sportswear Chill Knit">
+                  </div>
+                  <div class="product-info">
+                    <h3 class="product-title">Nike Sportswear Chill Knit</h3>
+                    <div class="product-meta">Leggings acompañados con elástico mini y ajuste ceñido - Mujer</div>
+                    <div class="product-price">59,99 €</div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-columns">
+          <div class="footer-column">
+            <h3 class="footer-title">Recursos</h3>
+            <ul class="footer-links">
+              <li><a href="#">Tarjetas de regalo</a></li>
+              <li><a href="#">Tarjetas de regalo corporativas</a></li>
+              <li><a href="#">Buscar una tienda</a></li>
+              <li><a href="#">Nike Journal</a></li>
+              <li><a href="#">Hazte Member</a></li>
+              <li><a href="#">Descuento para estudiantes</a></li>
+              <li><a href="#">Comentarios</a></li>
+              <li><a href="#">Códigos promocionales</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h3 class="footer-title">Ayuda</h3>
+            <ul class="footer-links">
+              <li><a href="#">Obtener ayuda</a></li>
+              <li><a href="#">Estado del pedido</a></li>
+              <li><a href="#">Envíos y entregas</a></li>
+              <li><a href="#">Devoluciones</a></li>
+              <li><a href="#">Opciones de pago</a></li>
+              <li><a href="#">Contacto</a></li>
+              <li><a href="#">Evaluaciones</a></li>
+              <li><a href="#">Ayuda con los códigos promocionales de Nike</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h3 class="footer-title">Empresa</h3>
+            <ul class="footer-links">
+              <li><a href="#">Acerca de Nike</a></li>
+              <li><a href="#">Novedades</a></li>
+              <li><a href="#">Empleo</a></li>
+              <li><a href="#">Inversores</a></li>
+              <li><a href="#">Sostenibilidad</a></li>
+              <li><a href="#">Accesibilidad</a></li>
+              <li><a href="#">Propósito</a></li>
+              <li><a href="#">Informar de un problema</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <div class="region-selector">
+              <a href="#" class="region-link">
+                <span class="region-icon">🌐</span>
+                <span class="region-name">España</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <div class="copyright">
+            <p>© 2025 Nike, Inc. Todos los derechos reservados</p>
+          </div>
+          
+          <div class="legal-links">
+            <a href="#">Guías</a>
+            <a href="#">Términos de uso</a>
+            <a href="#">Términos de ventas</a>
+            <a href="#">Aviso legal</a>
+            <a href="#">Política de privacidad y cookies</a>
+          </div>
+          
+          <div class="cookie-settings">
+            <a href="#">Configuración de privacidad y cookies</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  
+  <script src="js/main.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>
