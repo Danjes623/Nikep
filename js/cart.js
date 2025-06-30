@@ -194,25 +194,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-function updateCartCount() {
-  const cartCount = document.getElementById('cart-count');
-  if (!cartCount) return;
-
-  const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
-  cartCount.textContent = totalQuantity;
-}
-
-function updateCart() {
-  localStorage.setItem('cart', JSON.stringify(cart));
-  updateCartDisplay();
-  updateCartTotal();
-  updateCartCount(); // <-- Agregado aquí
-}
-
-document.addEventListener('DOMContentLoaded', () => {
-  updateCartDisplay();
-  updateCartTotal();
-  updateCartCount(); // <-- Agregado aquí
+// Enviar formulario de pago simulado
+document.getElementById('payment-form').addEventListener('submit', function (e) {
+  e.preventDefault();
+  const metodo = document.querySelector('input[name="payment-method"]:checked').value;
+  alert(`✅ Pago simulado realizado con ${metodo}`);
+  document.getElementById('payment-modal').classList.add('hidden');
 });
+
 
  
