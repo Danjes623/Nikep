@@ -257,7 +257,7 @@ function resetSlidersToStart() {
   function startAutoplay() {
     setInterval(() => {
       moveSlider('newSlider', 1);
-    }, 10000); // cada 4 segundos
+    }, 15000); // cada 15 segundos
   }
 
   // Espera a que todo cargue para asegurar medidas correctas
