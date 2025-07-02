@@ -228,20 +228,44 @@ function resetSlidersToStart() {
     moveSlider('iconsSlider', 'reset');
 }
 
-function startAutoplay() {
-    autoplayInterval = setInterval(() => {
-        moveSlider('newSlider', 1);
-        setTimeout(() => {
-            moveSlider('iconsSlider', 1);
-        }, 2000);
 
-        // Reiniciar al inicio después de cierto tiempo (por ejemplo, cada 30 segundos)
-        setTimeout(() => {
-            resetSlidersToStart();
-        }, 3000);
+ let currentIndex = 0;
+  const slider = document.getElementById("newSlider");
+  const slides = slider.querySelectorAll(".slide");
+  const totalSlides = slides.length;
+  const slideWidth = slides[0].offsetWidth;
 
-    }, 5000);
-}
+  // Mueve el slider a la posición actual
+  function updateSliderPosition() {
+    slider.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+  }
+
+  // Función para mover el slider
+  function moveSlider(id, direction) {
+    currentIndex += direction;
+
+    if (currentIndex < 0) {
+      currentIndex = totalSlides - 1;
+    } else if (currentIndex >= totalSlides) {
+      currentIndex = 0;
+    }
+
+    updateSliderPosition();
+  }
+
+  // Movimiento automático
+  function startAutoplay() {
+    setInterval(() => {
+      moveSlider('newSlider', 1);
+    }, 10000); // cada 4 segundos
+  }
+
+  // Espera a que todo cargue para asegurar medidas correctas
+  window.addEventListener("load", () => {
+    updateSliderPosition();
+    startAutoplay();
+  });
+
 
 
 function stopAutoplay() {
@@ -250,19 +274,6 @@ function stopAutoplay() {
 
 
 
-// Iniciar autoplay al cargar la página
-document.addEventListener('DOMContentLoaded', () => {
-    startAutoplay();
-    
-    // Detener autoplay cuando el usuario interactúa con los sliders
-    document.querySelectorAll('.slider-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            stopAutoplay();
-            // Reiniciar después de un tiempo
-            setTimeout(startAutoplay, 10000);
-        });
-    });
-});
 
 // Animación de navbar al hacer scroll
 window.addEventListener('scroll', function() {
