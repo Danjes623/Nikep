@@ -496,7 +496,7 @@ class IconSlider {
             window.iconSlider = new IconSlider('iconsSlider');
             
             // Auto-slide opcional (descomenta si quieres que se mueva automáticamente)
-            /*
+            
             setInterval(() => {
                 if (window.iconSlider.currentIndex >= window.iconSlider.maxIndex) {
                     window.iconSlider.moveTo(0);
@@ -504,5 +504,5 @@ class IconSlider {
                     window.iconSlider.moveToNext();
                 }
             }, 5000); // 5 segundos
-            */
+            
         });
