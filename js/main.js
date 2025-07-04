@@ -114,7 +114,7 @@ function resetNewSlider() {
 function startNewSliderAutoplay() {
     newSliderAutoplayInterval = setInterval(() => {
         moveNewSlider(1);
-    }, 4000); // cada 4 segundos
+    }, 8000); // cada 4 segundos
 }
 
 function stopNewSliderAutoplay() {
