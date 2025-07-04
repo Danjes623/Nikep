@@ -878,7 +878,7 @@ p {
   justify-content: center;
   font-size: 12px;
   font-weight: bold;
-  min-width: 20px;
+  min-width: 10px;
   display: none; /* Se mostrará cuando haya productos */
 }
 
