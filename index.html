@@ -214,51 +214,53 @@
     </section>
 
    <!-- Sección Iconos -->
-<section class="icons">
-    <div class="container">
-        <h2 class="section-title">Descubre nuestros iconos</h2>
-        <div class="slider-container">
-            <div class="icons-slider" id="iconsSlider">
-                <div class="icon-card">
-                    <img src="images/icon1.jpg" alt="Icono 1"onclick="mostrarMensaje()">
-                    <div class="icon-name">Field General</div>
+<!-- Sección Iconos -->
+    <section class="icons">
+        <div class="container">
+            <h2 class="section-title">Descubre nuestros iconos</h2>
+            <div class="slider-container">
+                <div class="icons-slider" id="iconsSlider">
+                    <div class="icon-card">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop&crop=center" alt="Icono 1">
+                        <div class="icon-name">Field General</div>
+                    </div>
+                    <div class="icon-card">
+                        <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=400&h=400&fit=crop&crop=center" alt="Icono 2">
+                        <div class="icon-name">Cortez</div>
+                    </div>
+                    <div class="icon-card">
+                        <img src="https://images.unsplash.com/photo-1460353581641-37baddab0fa2?w=400&h=400&fit=crop&crop=center" alt="Icono 3">
+                        <div class="icon-name">Retro Running</div>
+                    </div>
+                    <div class="icon-card">
+                        <img src="https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?w=400&h=400&fit=crop&crop=center" alt="Icono 4">
+                        <div class="icon-name">Air Max</div>
+                    </div>
+                    <div class="icon-card">
+                        <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&h=400&fit=crop&crop=center" alt="Icono 5">
+                        <div class="icon-name">Free Run</div>
+                    </div>
+                    <div class="icon-card">
+                        <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=400&h=400&fit=crop&crop=center" alt="Icono 6">
+                        <div class="icon-name">Jordan</div>
+                    </div>
+                    <div class="icon-card">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop&crop=center" alt="Icono 7">
+                        <div class="icon-name">Zoom</div>
+                    </div>
                 </div>
-                <div class="icon-card">
-                    <img src="images/icon2.jpg" alt="Icono 2"onclick="mostrarMensaje()">
-                    <div class="icon-name">Cortez</div>
+                <div class="slider-nav">
+                    <button class="slider-btn prev-btn" onclick="moveSlider('iconsSlider', -1)">
+                        ‹
+                    </button>
+                    <button class="slider-btn next-btn" onclick="moveSlider('iconsSlider', 1)">
+                        ›
+                    </button>
                 </div>
-                <div class="icon-card">
-                    <img src="images/icon3.jpg" alt="Icono 3"onclick="mostrarMensaje()">
-                    <div class="icon-name">Retro Running</div>
-                </div>
-                <div class="icon-card">
-                    <img src="images/icon4.jpg" alt="Icono 4"onclick="mostrarMensaje()">
-                    <div class="icon-name">Air Max</div>
-                </div>
-                <div class="icon-card">
-                    <img src="images/icon5.jpg" alt="Icono 5"onclick="mostrarMensaje()">
-                    <div class="icon-name">Free Run</div>
-                </div>
-                <div class="icon-card">
-                    <img src="images/icon6.jpg" alt="Icono 6"onclick="mostrarMensaje()">
-                    <div class="icon-name">Jordan</div>
-                </div>
-                <div class="icon-card">
-                    <img src="images/icon7.jpg" alt="Icono 7"onclick="mostrarMensaje()">
-                    <div class="icon-name">Dunk</div>
-                </div>
-            </div>
-            <div class="slider-nav">
-                <button class="slider-btn prev-btn" type="button">
-                    <span>&lt;</span>
-                </button>
-                <button class="slider-btn next-btn" type="button">
-                    <span>&gt;</span>
-                </button>
+                <div class="slider-indicators" id="indicators"></div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
