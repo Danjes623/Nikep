@@ -265,7 +265,7 @@ window.cartUtils = {
 const cartCounterStyles = `
   .cart-counter {
     position: absolute;
-    top: -8px;
+    top: -2px;
     right: -8px;
     background: #e91e63;
     color: white;
