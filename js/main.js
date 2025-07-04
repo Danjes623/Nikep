@@ -329,8 +329,8 @@ function mostrarMensaje() {
 
         // Cerrar modal al hacer clic fuera de él
         window.onclick = function(event) {
-            const modal2 = document.getElementById('modalMensaje');
-            if (event.target === modal2) {
+            const modal = document.getElementById('modalMensaje');
+            if (event.target === modal) {
                 modal.style.display = 'none';
             }
         }

@@ -809,7 +809,7 @@ p {
 
 
 /* Aviso "Mensaje de Advertencia" */
- .modal2 {
+ .modal {
             display: none;
             position: fixed;
             z-index: 1000;
@@ -820,7 +820,7 @@ p {
             background-color: rgba(0, 0, 0, 0.5);
         }
 
-        .modal-content2 {
+        .modal-content {
             background-color: #fefefe;
             margin: 15% auto;
             padding: 20px;
@@ -831,12 +831,12 @@ p {
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
-        .modal-content2 h2 {
+        .modal-content h2 {
             color: #e91e63;
             margin-bottom: 15px;
         }
 
-        .close2 {
+        .close {
             color: #aaa;
             float: right;
             font-size: 28px;
@@ -845,11 +845,11 @@ p {
             line-height: 1;
         }
 
-        .close2:hover {
+        .close:hover {
             color: #000;
         }
 
-        .modal-btn2 {
+        .modal-btn {
             background: #e91e63;
             color: white;
             border: none;
@@ -859,7 +859,7 @@ p {
             margin-top: 10px;
         }
 
-        .modal-btn2:hover {
+        .modal-btn:hover {
             background: #c2185b;
         }
 
