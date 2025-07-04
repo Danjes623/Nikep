@@ -341,7 +341,7 @@ function updateCartCounter() {
   const cartCounters = document.querySelectorAll('.cart-counter, .cart-badge, .cart-count');
   cartCounters.forEach(counter => {
     counter.textContent = totalItems;
-    counter.style.display = totalItems > 0 ? 'none' : 'none';
+   counter.style.display = totalItems > 0 ? 'inline-block' : 'none';
   });
 
   return totalItems;
