@@ -72,43 +72,206 @@ function setupInfoToggles() {
   });
 }
 
-// Variables para los sliders
-let currentNewSlidePosition = 0;
-let currentIconsSlidePosition = 0;
-let slidesPerView = window.innerWidth < 768 ? 1 : window.innerWidth < 992 ? 2 : 3;
+// ========== SLIDER FUNCTIONALITY ==========
 
-// Función para mover los sliders
-function moveSlider(sliderId, direction) {
-    const slider = document.getElementById(sliderId);
-    const slides = slider.querySelectorAll('div[class^="slide"], div[class^="icon-card"]');
+// Variables para el slider "Lo mejor y lo más nuevo"
+let currentNewSlideIndex = 0;
+let newSliderAutoplayInterval;
+
+// Función para el slider "Lo mejor y lo más nuevo"
+function moveNewSlider(direction) {
+    const slider = document.getElementById('newSlider');
+    const slides = slider.querySelectorAll('.slide');
+    const totalSlides = slides.length;
     
-    // Determinar qué contador de posición modificar
-    let currentPosition;
-    if (sliderId === 'newSlider') {
-        currentNewSlidePosition += direction;
-        if (currentNewSlidePosition < 0) currentNewSlidePosition = 0;
-        if (currentNewSlidePosition > slides.length - slidesPerView) currentNewSlidePosition = slides.length - slidesPerView;
-        currentPosition = currentNewSlidePosition;
-    } else {
-        currentIconsSlidePosition += direction;
-        if (currentIconsSlidePosition < 0) currentIconsSlidePosition = 0;
-        if (currentIconsSlidePosition > slides.length - 4) currentIconsSlidePosition = slides.length - 4;
-        currentPosition = currentIconsSlidePosition;
+    // Actualizar índice
+    currentNewSlideIndex += direction;
+    
+    // Loop infinito
+    if (currentNewSlideIndex < 0) {
+        currentNewSlideIndex = totalSlides - 1;
+    } else if (currentNewSlideIndex >= totalSlides) {
+        currentNewSlideIndex = 0;
     }
     
-    // Calcular el desplazamiento
-    const slideWidth = sliderId === 'newSlider' 
-        ? slider.querySelector('.slide').offsetWidth + parseInt(getComputedStyle(slider.querySelector('.slide')).marginRight)
-        : slider.querySelector('.icon-card').offsetWidth;
+    // Calcular desplazamiento
+    const slideWidth = slides[0].offsetWidth + 20; // 20px de gap
+    const offset = -currentNewSlideIndex * slideWidth;
     
-    const offset = -currentPosition * slideWidth;
-    
-    // Aplicar la transformación
+    // Aplicar transformación
     slider.style.transform = `translateX(${offset}px)`;
+    slider.style.transition = 'transform 0.5s ease-in-out';
 }
 
+// Función para resetear el slider "Lo mejor y lo más nuevo"
+function resetNewSlider() {
+    currentNewSlideIndex = 0;
+    const slider = document.getElementById('newSlider');
+    slider.style.transform = 'translateX(0)';
+}
+
+// Autoplay para el slider "Lo mejor y lo más nuevo"
+function startNewSliderAutoplay() {
+    newSliderAutoplayInterval = setInterval(() => {
+        moveNewSlider(1);
+    }, 4000); // cada 4 segundos
+}
+
+function stopNewSliderAutoplay() {
+    clearInterval(newSliderAutoplayInterval);
+}
+
+// ========== ICON SLIDER CLASS ==========
+
+class IconSlider {
+    constructor(sliderId) {
+        this.slider = document.getElementById(sliderId);
+        if (!this.slider) return;
+        
+        this.cards = this.slider.querySelectorAll('.icon-card');
+        this.totalCards = this.cards.length;
+        this.currentIndex = 0;
+        this.cardWidth = 280; // Ancho de cada card incluyendo gap
+        this.visibleCards = this.getVisibleCards();
+        this.maxIndex = Math.max(0, this.totalCards - this.visibleCards);
+        
+        this.init();
+        this.setupEventListeners();
+        this.createIndicators();
+        this.updateButtons();
+    }
+
+    init() {
+        this.updateSliderPosition();
+    }
+
+    getVisibleCards() {
+        const containerWidth = this.slider.parentElement.offsetWidth - 60;
+        return Math.floor(containerWidth / this.cardWidth);
+    }
+
+    setupEventListeners() {
+        // Eventos de touch para móviles
+        let startX = 0;
+        let currentX = 0;
+        let isDragging = false;
+
+        this.slider.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+            isDragging = true;
+        });
+
+        this.slider.addEventListener('touchmove', (e) => {
+            if (!isDragging) return;
+            e.preventDefault();
+            currentX = e.touches[0].clientX;
+        });
+
+        this.slider.addEventListener('touchend', () => {
+            if (!isDragging) return;
+            isDragging = false;
+            
+            const diffX = startX - currentX;
+            if (Math.abs(diffX) > 50) {
+                if (diffX > 0) {
+                    this.moveToNext();
+                } else {
+                    this.moveToPrev();
+                }
+            }
+        });
+
+        // Redimensionamiento de ventana
+        window.addEventListener('resize', () => {
+            this.visibleCards = this.getVisibleCards();
+            this.maxIndex = Math.max(0, this.totalCards - this.visibleCards);
+            this.currentIndex = Math.min(this.currentIndex, this.maxIndex);
+            this.updateSliderPosition();
+            this.updateButtons();
+            this.updateIndicators();
+        });
+    }
+
+    createIndicators() {
+        const indicatorsContainer = document.getElementById('indicators');
+        if (!indicatorsContainer) return;
+        
+        indicatorsContainer.innerHTML = '';
+        
+        const totalIndicators = this.maxIndex + 1;
+        for (let i = 0; i < totalIndicators; i++) {
+            const indicator = document.createElement('div');
+            indicator.className = 'indicator';
+            if (i === 0) indicator.classList.add('active');
+            
+            indicator.addEventListener('click', () => {
+                this.moveTo(i);
+            });
+            
+            indicatorsContainer.appendChild(indicator);
+        }
+    }
+
+    updateIndicators() {
+        const indicators = document.querySelectorAll('.indicator');
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === this.currentIndex);
+        });
+    }
+
+    updateSliderPosition() {
+        const translateX = -this.currentIndex * this.cardWidth;
+        this.slider.style.transform = `translateX(${translateX}px)`;
+        this.slider.style.transition = 'transform 0.3s ease';
+    }
+
+    updateButtons() {
+        const prevBtn = document.querySelector('.icons .prev-btn');
+        const nextBtn = document.querySelector('.icons .next-btn');
+        
+        if (prevBtn) prevBtn.disabled = this.currentIndex === 0;
+        if (nextBtn) nextBtn.disabled = this.currentIndex >= this.maxIndex;
+    }
+
+    moveTo(index) {
+        this.currentIndex = Math.max(0, Math.min(index, this.maxIndex));
+        this.updateSliderPosition();
+        this.updateButtons();
+        this.updateIndicators();
+    }
+
+    moveToNext() {
+        if (this.currentIndex < this.maxIndex) {
+            this.moveTo(this.currentIndex + 1);
+        }
+    }
+
+    moveToPrev() {
+        if (this.currentIndex > 0) {
+            this.moveTo(this.currentIndex - 1);
+        }
+    }
+}
+
+// ========== FUNCIÓN GLOBAL PARA COMPATIBILIDAD ==========
+
+// Función global para manejar ambos sliders
+function moveSlider(sliderId, direction) {
+    if (sliderId === 'newSlider') {
+        moveNewSlider(direction);
+    } else if (sliderId === 'iconsSlider') {
+        if (direction > 0) {
+            window.iconSlider.moveToNext();
+        } else {
+            window.iconSlider.moveToPrev();
+        }
+    }
+}
+
+// ========== EFECTOS HOVER Y ANIMACIONES ==========
+
 // Efectos hover en cards
-document.addEventListener('DOMContentLoaded', function() {
+function setupHoverEffects() {
     // Animaciones para tarjetas de eventos
     document.querySelectorAll('.event-card').forEach(card => {
         card.addEventListener('mouseenter', () => {
@@ -126,13 +289,13 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.sport-card').forEach(card => {
         card.addEventListener('mouseenter', () => {
             const img = card.querySelector('img');
-            img.style.filter = 'grayscale(0%)';
+            if (img) img.style.filter = 'grayscale(0%)';
             card.style.transform = 'scale(1.03)';
         });
         
         card.addEventListener('mouseleave', () => {
             const img = card.querySelector('img');
-            img.style.filter = 'grayscale(100%)';
+            if (img) img.style.filter = 'grayscale(100%)';
             card.style.transform = 'scale(1)';
         });
     });
@@ -142,13 +305,13 @@ document.addEventListener('DOMContentLoaded', function() {
         card.addEventListener('mouseenter', () => {
             card.style.transform = 'translateY(-5px)';
             const img = card.querySelector('img');
-            img.style.transform = 'scale(1.05)';
+            if (img) img.style.transform = 'scale(1.05)';
         });
         
         card.addEventListener('mouseleave', () => {
             card.style.transform = 'translateY(0)';
             const img = card.querySelector('img');
-            img.style.transform = 'scale(1)';
+            if (img) img.style.transform = 'scale(1)';
         });
     });
     
@@ -156,353 +319,168 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.slide').forEach(slide => {
         slide.addEventListener('mouseenter', () => {
             const img = slide.querySelector('img');
-            img.style.transform = 'scale(1.05)';
+            if (img) img.style.transform = 'scale(1.05)';
         });
         
         slide.addEventListener('mouseleave', () => {
             const img = slide.querySelector('img');
-            img.style.transform = 'scale(1)';
+            if (img) img.style.transform = 'scale(1)';
         });
     });
-    
-    // Navegación táctil para sliders
+}
+
+// ========== NAVEGACIÓN TÁCTIL ==========
+
+function setupTouchNavigation() {
     let touchStartX = 0;
     let touchEndX = 0;
     
     const newSlider = document.getElementById('newSlider');
-    const iconsSlider = document.getElementById('iconsSlider');
     
-    newSlider.addEventListener('touchstart', e => {
-        touchStartX = e.changedTouches[0].screenX;
-    });
+    if (newSlider) {
+        newSlider.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        newSlider.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleNewSliderSwipe();
+        });
+    }
     
-    newSlider.addEventListener('touchend', e => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe(newSlider.id);
-    });
-    
-    iconsSlider.addEventListener('touchstart', e => {
-        touchStartX = e.changedTouches[0].screenX;
-    });
-    
-    iconsSlider.addEventListener('touchend', e => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe(iconsSlider.id);
-    });
-    
-    function handleSwipe(sliderId) {
+    function handleNewSliderSwipe() {
         if (touchEndX < touchStartX) {
-            moveSlider(sliderId, 1); // Deslizar a la izquierda
+            moveNewSlider(1); // Deslizar a la izquierda
         }
         if (touchEndX > touchStartX) {
-            moveSlider(sliderId, -1); // Deslizar a la derecha
+            moveNewSlider(-1); // Deslizar a la derecha
         }
     }
-});
+}
 
-// Ajustar sliders al cambiar el tamaño de la ventana
-window.addEventListener('resize', () => {
-    // Actualizar slidesPerView según el ancho de ventana
-    slidesPerView = window.innerWidth < 768 ? 1 : window.innerWidth < 992 ? 2 : 3;
-    
-    // Resetear posiciones
-    currentNewSlidePosition = 0;
-    currentIconsSlidePosition = 0;
-    
-    // Resetear transformaciones
-    document.getElementById('newSlider').style.transform = 'translateX(0)';
-    document.getElementById('iconsSlider').style.transform = 'translateX(0)';
-});
+// ========== FUNCIONES AUXILIARES ==========
 
 // Función para alternar menú móvil
 function toggleMobileMenu() {
     const mobileMenu = document.querySelector('.mobile-menu');
-    mobileMenu.classList.toggle('active');
-}
-
-// Autoplay para sliders (opcional)
-let autoplayInterval;
-
-function resetSlidersToStart() {
-    moveSlider('newSlider', 'reset');
-    moveSlider('iconsSlider', 'reset');
-}
-
-
- let currentIndex = 0;
-  const slider = document.getElementById("newSlider");
-  const slides = slider.querySelectorAll(".slide");
-  const totalSlides = slides.length;
-  const slideWidth = slides[0].offsetWidth;
-
-  // Mueve el slider a la posición actual
-  function updateSliderPosition() {
-    slider.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
-  }
-
-  // Función para mover el slider
-  function moveSlider(id, direction) {
-    currentIndex += direction;
-
-    if (currentIndex < 0) {
-      currentIndex = totalSlides - 1;
-    } else if (currentIndex >= totalSlides) {
-      currentIndex = 0;
+    if (mobileMenu) {
+        mobileMenu.classList.toggle('active');
     }
-
-    updateSliderPosition();
-  }
-
-  // Movimiento automático
-  function startAutoplay() {
-    setInterval(() => {
-      moveSlider('newSlider', 1);
-    }, 15000); // cada 15 segundos
-  }
-
-  // Espera a que todo cargue para asegurar medidas correctas
-  window.addEventListener("load", () => {
-    updateSliderPosition();
-    startAutoplay();
-  });
-
-
-
-function stopAutoplay() {
-    clearInterval(autoplayInterval);
 }
-
-
-
-
-// Animación de navbar al hacer scroll
-window.addEventListener('scroll', function() {
-    const header = document.querySelector('.header');
-    if (window.scrollY > 50) {
-        header.style.padding = '5px 0';
-        header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
-    } else {
-        header.style.padding = '10px 0';
-        header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-    }
-});
 
 // Función para búsqueda
 function performSearch() {
-    const searchInput = document.querySelector('.search-box input').value.toLowerCase();
-    // Aquí se implementaría la lógica real de búsqueda
+    const searchBox = document.querySelector('.search-box input');
+    const searchInput = searchBox ? searchBox.value.toLowerCase() : '';
+    
     console.log(`Buscando: ${searchInput}`);
     
     if (searchInput.length > 0) {
         alert(`Buscando productos relacionados con: "${searchInput}"`);
     }
     
-    return false; // Prevenir recarga de página
+    return false;
 }
 
-// Configurar evento de búsqueda
+// Modal functions
+function mostrarMensaje() {
+    const modal = document.getElementById('modalMensaje');
+    if (modal) {
+        modal.style.display = 'block';
+    }
+}
+
+function cerrarModal() {
+    const modal = document.getElementById('modalMensaje');
+    if (modal) {
+        modal.style.display = 'none';
+    }
+}
+
+// ========== INICIALIZACIÓN ==========
+
+// Inicialización cuando se carga la página
 document.addEventListener('DOMContentLoaded', function() {
-    const searchForm = document.querySelector('.search-box');
-    const searchIcon = document.querySelector('.search-box i');
+    // Inicializar slider de iconos
+    window.iconSlider = new IconSlider('iconsSlider');
     
-    searchIcon.addEventListener('click', () => {
-        performSearch();
-    });
+    // Configurar efectos hover
+    setupHoverEffects();
+    
+    // Configurar navegación táctil
+    setupTouchNavigation();
+    
+    // Inicializar autoplay para el slider principal
+    startNewSliderAutoplay();
+    
+    // Configurar evento de búsqueda
+    const searchIcon = document.querySelector('.search-box i');
+    if (searchIcon) {
+        searchIcon.addEventListener('click', () => {
+            performSearch();
+        });
+    }
     
     // Permitir búsqueda con Enter
-    searchForm.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            e.preventDefault();
-            performSearch();
+    const searchForm = document.querySelector('.search-box');
+    if (searchForm) {
+        searchForm.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                performSearch();
+            }
+        });
+    }
+    
+    // Configurar modal
+    window.onclick = function(event) {
+        const modal = document.getElementById('modalMensaje');
+        if (event.target === modal) {
+            modal.style.display = 'none';
+        }
+    }
+    
+    // Cerrar modal con Escape
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            cerrarModal();
         }
     });
 });
 
+// ========== EVENT LISTENERS ==========
 
-function mostrarMensaje() {
-            document.getElementById('modalMensaje').style.display = 'block';
+// Ajustar sliders al cambiar el tamaño de la ventana
+window.addEventListener('resize', () => {
+    // Resetear slider principal
+    resetNewSlider();
+    
+    // El slider de iconos se ajusta automáticamente en su clase
+});
+
+// Animación de navbar al hacer scroll
+window.addEventListener('scroll', function() {
+    const header = document.querySelector('.header');
+    if (header) {
+        if (window.scrollY > 50) {
+            header.style.padding = '5px 0';
+            header.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+        } else {
+            header.style.padding = '10px 0';
+            header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
         }
+    }
+    
+    // Llamar a la función de scroll del header
+    handleScroll();
+});
 
-        function cerrarModal() {
-            document.getElementById('modalMensaje').style.display = 'none';
-        }
-
-        // Cerrar modal al hacer clic fuera de él
-        window.onclick = function(event) {
-            const modal = document.getElementById('modalMensaje');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        }
-
-        // Cerrar modal con la tecla Escape
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                cerrarModal();
-            }
-        });
-
-
-
-
-
-        // cl
-class IconSlider {
-            constructor(sliderId) {
-                this.slider = document.getElementById(sliderId);
-                this.cards = this.slider.querySelectorAll('.icon-card');
-                this.totalCards = this.cards.length;
-                this.currentIndex = 0;
-                this.cardWidth = 300; // Ancho de cada card incluyendo gap
-                this.visibleCards = this.getVisibleCards();
-                this.maxIndex = Math.max(0, this.totalCards - this.visibleCards);
-                
-                this.init();
-                this.setupEventListeners();
-                this.createIndicators();
-                this.updateButtons();
-            }
-
-            init() {
-                // Configuración inicial
-                this.updateSliderPosition();
-            }
-
-            getVisibleCards() {
-                const containerWidth = this.slider.parentElement.offsetWidth - 60; // Restamos padding
-                return Math.floor(containerWidth / this.cardWidth);
-            }
-
-            setupEventListeners() {
-                // Eventos de teclado
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'ArrowLeft') {
-                        this.moveToPrev();
-                    } else if (e.key === 'ArrowRight') {
-                        this.moveToNext();
-                    }
-                });
-
-                // Eventos de touch para móviles
-                let startX = 0;
-                let currentX = 0;
-                let isDragging = false;
-
-                this.slider.addEventListener('touchstart', (e) => {
-                    startX = e.touches[0].clientX;
-                    isDragging = true;
-                });
-
-                this.slider.addEventListener('touchmove', (e) => {
-                    if (!isDragging) return;
-                    e.preventDefault();
-                    currentX = e.touches[0].clientX;
-                });
-
-                this.slider.addEventListener('touchend', () => {
-                    if (!isDragging) return;
-                    isDragging = false;
-                    
-                    const diffX = startX - currentX;
-                    if (Math.abs(diffX) > 50) { // Umbral mínimo para el swipe
-                        if (diffX > 0) {
-                            this.moveToNext();
-                        } else {
-                            this.moveToPrev();
-                        }
-                    }
-                });
-
-                // Redimensionamiento de ventana
-                window.addEventListener('resize', () => {
-                    this.visibleCards = this.getVisibleCards();
-                    this.maxIndex = Math.max(0, this.totalCards - this.visibleCards);
-                    this.currentIndex = Math.min(this.currentIndex, this.maxIndex);
-                    this.updateSliderPosition();
-                    this.updateButtons();
-                    this.updateIndicators();
-                });
-            }
-
-            createIndicators() {
-                const indicatorsContainer = document.getElementById('indicators');
-                indicatorsContainer.innerHTML = '';
-                
-                const totalIndicators = this.maxIndex + 1;
-                for (let i = 0; i < totalIndicators; i++) {
-                    const indicator = document.createElement('div');
-                    indicator.className = 'indicator';
-                    if (i === 0) indicator.classList.add('active');
-                    
-                    indicator.addEventListener('click', () => {
-                        this.moveTo(i);
-                    });
-                    
-                    indicatorsContainer.appendChild(indicator);
-                }
-            }
-
-            updateIndicators() {
-                const indicators = document.querySelectorAll('.indicator');
-                indicators.forEach((indicator, index) => {
-                    indicator.classList.toggle('active', index === this.currentIndex);
-                });
-            }
-
-            updateSliderPosition() {
-                const translateX = -this.currentIndex * this.cardWidth;
-                this.slider.style.transform = `translateX(${translateX}px)`;
-            }
-
-            updateButtons() {
-                const prevBtn = document.querySelector('.prev-btn');
-                const nextBtn = document.querySelector('.next-btn');
-                
-                prevBtn.disabled = this.currentIndex === 0;
-                nextBtn.disabled = this.currentIndex >= this.maxIndex;
-            }
-
-            moveTo(index) {
-                this.currentIndex = Math.max(0, Math.min(index, this.maxIndex));
-                this.updateSliderPosition();
-                this.updateButtons();
-                this.updateIndicators();
-            }
-
-            moveToNext() {
-                if (this.currentIndex < this.maxIndex) {
-                    this.moveTo(this.currentIndex + 1);
-                }
-            }
-
-            moveToPrev() {
-                if (this.currentIndex > 0) {
-                    this.moveTo(this.currentIndex - 1);
-                }
-            }
-        }
-
-        // Función global para compatibilidad con tu código existente
-        function moveSlider(sliderId, direction) {
-            if (direction > 0) {
-                window.iconSlider.moveToNext();
-            } else {
-                window.iconSlider.moveToPrev();
-            }
-        }
-
-        // Inicialización cuando se carga la página
-        document.addEventListener('DOMContentLoaded', () => {
-            window.iconSlider = new IconSlider('iconsSlider');
-            
-            // Auto-slide opcional (descomenta si quieres que se mueva automáticamente)
-            /*
-            setInterval(() => {
-                if (window.iconSlider.currentIndex >= window.iconSlider.maxIndex) {
-                    window.iconSlider.moveTo(0);
-                } else {
-                    window.iconSlider.moveToNext();
-                }
-            }, 5000); // 5 segundos
-            */
-        });
+// Asegurar que el slider se inicialice correctamente después de cargar completamente
+window.addEventListener('load', () => {
+    // Resetear posición del slider principal
+    resetNewSlider();
+    
+    // Reiniciar autoplay
+    stopNewSliderAutoplay();
+    startNewSliderAutoplay();
+});
