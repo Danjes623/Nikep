@@ -277,7 +277,7 @@ const cartCounterStyles = `
     justify-content: center;
     font-size: 12px;
     font-weight: bold;
-    min-width: 20px;
+    min-width: 10px;
     animation: cartBounce 0.3s ease-in-out;
   }
 
