@@ -341,3 +341,168 @@ function mostrarMensaje() {
                 cerrarModal();
             }
         });
+
+
+
+
+
+        // cl
+class IconSlider {
+            constructor(sliderId) {
+                this.slider = document.getElementById(sliderId);
+                this.cards = this.slider.querySelectorAll('.icon-card');
+                this.totalCards = this.cards.length;
+                this.currentIndex = 0;
+                this.cardWidth = 300; // Ancho de cada card incluyendo gap
+                this.visibleCards = this.getVisibleCards();
+                this.maxIndex = Math.max(0, this.totalCards - this.visibleCards);
+                
+                this.init();
+                this.setupEventListeners();
+                this.createIndicators();
+                this.updateButtons();
+            }
+
+            init() {
+                // Configuración inicial
+                this.updateSliderPosition();
+            }
+
+            getVisibleCards() {
+                const containerWidth = this.slider.parentElement.offsetWidth - 60; // Restamos padding
+                return Math.floor(containerWidth / this.cardWidth);
+            }
+
+            setupEventListeners() {
+                // Eventos de teclado
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') {
+                        this.moveToPrev();
+                    } else if (e.key === 'ArrowRight') {
+                        this.moveToNext();
+                    }
+                });
+
+                // Eventos de touch para móviles
+                let startX = 0;
+                let currentX = 0;
+                let isDragging = false;
+
+                this.slider.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    isDragging = true;
+                });
+
+                this.slider.addEventListener('touchmove', (e) => {
+                    if (!isDragging) return;
+                    e.preventDefault();
+                    currentX = e.touches[0].clientX;
+                });
+
+                this.slider.addEventListener('touchend', () => {
+                    if (!isDragging) return;
+                    isDragging = false;
+                    
+                    const diffX = startX - currentX;
+                    if (Math.abs(diffX) > 50) { // Umbral mínimo para el swipe
+                        if (diffX > 0) {
+                            this.moveToNext();
+                        } else {
+                            this.moveToPrev();
+                        }
+                    }
+                });
+
+                // Redimensionamiento de ventana
+                window.addEventListener('resize', () => {
+                    this.visibleCards = this.getVisibleCards();
+                    this.maxIndex = Math.max(0, this.totalCards - this.visibleCards);
+                    this.currentIndex = Math.min(this.currentIndex, this.maxIndex);
+                    this.updateSliderPosition();
+                    this.updateButtons();
+                    this.updateIndicators();
+                });
+            }
+
+            createIndicators() {
+                const indicatorsContainer = document.getElementById('indicators');
+                indicatorsContainer.innerHTML = '';
+                
+                const totalIndicators = this.maxIndex + 1;
+                for (let i = 0; i < totalIndicators; i++) {
+                    const indicator = document.createElement('div');
+                    indicator.className = 'indicator';
+                    if (i === 0) indicator.classList.add('active');
+                    
+                    indicator.addEventListener('click', () => {
+                        this.moveTo(i);
+                    });
+                    
+                    indicatorsContainer.appendChild(indicator);
+                }
+            }
+
+            updateIndicators() {
+                const indicators = document.querySelectorAll('.indicator');
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === this.currentIndex);
+                });
+            }
+
+            updateSliderPosition() {
+                const translateX = -this.currentIndex * this.cardWidth;
+                this.slider.style.transform = `translateX(${translateX}px)`;
+            }
+
+            updateButtons() {
+                const prevBtn = document.querySelector('.prev-btn');
+                const nextBtn = document.querySelector('.next-btn');
+                
+                prevBtn.disabled = this.currentIndex === 0;
+                nextBtn.disabled = this.currentIndex >= this.maxIndex;
+            }
+
+            moveTo(index) {
+                this.currentIndex = Math.max(0, Math.min(index, this.maxIndex));
+                this.updateSliderPosition();
+                this.updateButtons();
+                this.updateIndicators();
+            }
+
+            moveToNext() {
+                if (this.currentIndex < this.maxIndex) {
+                    this.moveTo(this.currentIndex + 1);
+                }
+            }
+
+            moveToPrev() {
+                if (this.currentIndex > 0) {
+                    this.moveTo(this.currentIndex - 1);
+                }
+            }
+        }
+
+        // Función global para compatibilidad con tu código existente
+        function moveSlider(sliderId, direction) {
+            if (direction > 0) {
+                window.iconSlider.moveToNext();
+            } else {
+                window.iconSlider.moveToPrev();
+            }
+        }
+
+        // Inicialización cuando se carga la página
+        document.addEventListener('DOMContentLoaded', () => {
+            window.iconSlider = new IconSlider('iconsSlider');
+            
+            // Auto-slide opcional (descomenta si quieres que se mueva automáticamente)
+            /*
+            setInterval(() => {
+                if (window.iconSlider.currentIndex >= window.iconSlider.maxIndex) {
+                    window.iconSlider.moveTo(0);
+                } else {
+                    window.iconSlider.moveToNext();
+                }
+            }, 5000); // 5 segundos
+            */
+        });
