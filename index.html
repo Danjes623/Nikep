@@ -90,53 +90,62 @@
             <h2 class="section-title">Eventos de temporada</h2>
             <div class="events-grid">
                 <div class="event-card">
-                    <img src="./imghome/madre.png" alt="Evento 1">
+                    <img src="/imghome/madre.png" alt="Evento 1" onclick="mostrarMensaje()">
                     <div class="event-content">
                         <h3>CORAZÓN DE MADRE</h3>
                         <p>Encuentra el regalo perfecto</p>
-                        <a href="#" class="comprar-btn">Comprar</a>
+                        <a href="#" class="comprar-btn" onclick="mostrarMensaje(); return false;">Comprar</a>
                     </div>
                 </div>
                 <div class="event-card">
-                    <img src="./imghome/barcelona.png" alt="Evento 2">
+                    <img src="/imghome/barcelona.png" alt="Evento 2" onclick="mostrarMensaje()">
                     <div class="event-content">
                         <h3>FC BARCELONA</h3>
                         <p>La nueva camiseta está aquí</p>
-                        <a href="#" class="comprar-btn">Comprar</a>
+                        <a href="#" class="comprar-btn" onclick="mostrarMensaje(); return false;">Comprar</a>
                     </div>
                 </div>
                 <div class="event-card">
-                    <img src="./imghome/niños.png" alt="Evento 3">
+                    <img src="/imghome/niños.png" alt="Evento 3" onclick="mostrarMensaje()">
                     <div class="event-content">
                         <h3>PASIÓN Y VISIÓN</h3>
                         <p>Equipo completo para niños</p>
-                        <a href="#" class="comprar-btn">Comprar</a>
+                        <a href="#" class="comprar-btn" onclick="mostrarMensaje(); return false;">Comprar</a>
                     </div>
                 </div>
                 <div class="event-card">
-                    <img src="./imghome/agilidad.png" alt="Evento 4">
+                    <img src="/imghome/agilidad.png" alt="Evento 4" onclick="mostrarMensaje()">
                     <div class="event-content">
                         <h3>AGILIDAD TRANQUILA</h3>
                         <p>Equipo para entrenamiento</p>
-                        <a href="#" class="comprar-btn">Comprar</a>
+                        <a href="#" class="comprar-btn" onclick="mostrarMensaje(); return false;">Comprar</a>
                     </div>
                 </div>
                 <div class="event-card">
-                    <img src="./imghome/raquetas.png" alt="Evento 5">
+                    <img src="/imghome/raquetas.png" alt="Evento 5" onclick="mostrarMensaje()">
                     <div class="event-content">
                         <h3>DEPORTES DE RAQUETA</h3>
                         <p>Descubre nuestra colección</p>
-                        <a href="#" class="comprar-btn">Comprar</a>
+                        <a href="#" class="comprar-btn" onclick="mostrarMensaje(); return false;">Comprar</a>
                     </div>
                 </div>
                 <div class="event-card">
-                    <img src="./imghome/baseball.png" alt="Evento 6">
+                    <img src="/imghome/baseball.png" alt="Evento 6" onclick="mostrarMensaje()">
                     <div class="event-content">
                         <h3>HOMEROUND A TUS METAS</h3>
                         <p>Equipamiento de béisbol</p>
-                        <a href="#" class="comprar-btn">Comprar</a>
+                        <a href="#" class="comprar-btn" onclick="mostrarMensaje(); return false;">Comprar</a>
                     </div>
                 </div>
+
+                 <div id="modalMensaje" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal()">&times;</span>
+            <h2>¡Muy pronto!</h2>
+            <p>Estamos trabajando para traerte algo especial. Mantente atento a nuestras novedades.</p>
+            <button class="modal-btn" onclick="cerrarModal()">Entendido</button>
+        </div>
+    </div>
             </div>
         </div>
     </section>
