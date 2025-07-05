@@ -35,52 +35,28 @@ if (searchForm) {
     const searchTerm = searchInput.value.trim();
     
     if (searchTerm.length > 0) {
-      // In a real implementation, this would redirect to a search results page
       console.log(`Searching for: ${searchTerm}`);
       alert(`Búsqueda: ${searchTerm}`);
-      
-      // For demo purposes only - in a real site you would redirect to a search results page
-      // window.location.href = `search-results.html?q=${encodeURIComponent(searchTerm)}`;
     }
   });
 }
 
-// Fade In Animation for Elements
-function animateOnScroll() {
-  const elements = document.querySelectorAll('.animate-on-scroll');
-  
-  elements.forEach(element => {
-    const elementPosition = element.getBoundingClientRect().top;
-    const screenPosition = window.innerHeight / 1.2;
-    
-    if (elementPosition < screenPosition) {
-      element.classList.add('fade-in');
-    }
-  });
-}
-
-// Info Toggles (for expandable sections)
-function setupInfoToggles() {
-  const toggleButtons = document.querySelectorAll('.toggle-button');
-  
-  toggleButtons.forEach(button => {
-    button.addEventListener('click', function() {
-      const content = this.closest('.info-header').nextElementSibling;
-      this.classList.toggle('open');
-      content.classList.toggle('open');
-    });
-  });
-}
-
-// ========== SLIDER FUNCTIONALITY ==========
+// ========== VARIABLES GLOBALES PARA SLIDERS ==========
 
 // Variables para el slider "Lo mejor y lo más nuevo"
 let currentNewSlideIndex = 0;
 let newSliderAutoplayInterval;
 
-// Función para el slider "Lo mejor y lo más nuevo"
+// Variables para el slider de iconos
+let currentIconSlideIndex = 0;
+let iconSliderAutoplayInterval;
+
+// ========== FUNCIONES PARA SLIDER "LO MEJOR Y LO MÁS NUEVO" ==========
+
 function moveNewSlider(direction) {
     const slider = document.getElementById('newSlider');
+    if (!slider) return;
+    
     const slides = slider.querySelectorAll('.slide');
     const totalSlides = slides.length;
     
@@ -101,235 +77,122 @@ function moveNewSlider(direction) {
     // Aplicar transformación
     slider.style.transform = `translateX(${offset}px)`;
     slider.style.transition = 'transform 0.5s ease-in-out';
+    
+    // Actualizar indicadores si existen
+    updateNewSliderIndicators();
+    
+    console.log(`Slider Principal - Slide actual: ${currentNewSlideIndex + 1}/${totalSlides}`);
 }
 
-// Función para resetear el slider "Lo mejor y lo más nuevo"
 function resetNewSlider() {
     currentNewSlideIndex = 0;
     const slider = document.getElementById('newSlider');
-    slider.style.transform = 'translateX(0)';
+    if (slider) {
+        slider.style.transform = 'translateX(0)';
+        slider.style.transition = 'transform 0.5s ease-in-out';
+        updateNewSliderIndicators();
+    }
 }
 
-// Autoplay para el slider "Lo mejor y lo más nuevo"
 function startNewSliderAutoplay() {
+    stopNewSliderAutoplay(); // Detener cualquier autoplay existente
     newSliderAutoplayInterval = setInterval(() => {
         moveNewSlider(1);
-    }, 8000); // cada 4 segundos
+    }, 4000); // Cada 4 segundos
+    console.log('Autoplay del slider principal iniciado');
 }
 
 function stopNewSliderAutoplay() {
-    clearInterval(newSliderAutoplayInterval);
-}
-
-// ========== ICON SLIDER CLASS ==========
-
-class IconSlider {
-    constructor(sliderId) {
-        this.slider = document.getElementById(sliderId);
-        if (!this.slider) return;
-        
-        this.cards = this.slider.querySelectorAll('.icon-card');
-        this.totalCards = this.cards.length;
-        this.currentIndex = 0;
-        this.cardWidth = 280; // Ancho de cada card incluyendo gap
-        this.visibleCards = this.getVisibleCards();
-        this.maxIndex = Math.max(0, this.totalCards - this.visibleCards);
-        
-        this.init();
-        this.setupEventListeners();
-        this.createIndicators();
-        this.updateButtons();
-    }
-
-    init() {
-        this.updateSliderPosition();
-    }
-
-    getVisibleCards() {
-        const containerWidth = this.slider.parentElement.offsetWidth - 60;
-        return Math.floor(containerWidth / this.cardWidth);
-    }
-
-    setupEventListeners() {
-        // Eventos de touch para móviles
-        let startX = 0;
-        let currentX = 0;
-        let isDragging = false;
-
-        this.slider.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-            isDragging = true;
-        });
-
-        this.slider.addEventListener('touchmove', (e) => {
-            if (!isDragging) return;
-            e.preventDefault();
-            currentX = e.touches[0].clientX;
-        });
-
-        this.slider.addEventListener('touchend', () => {
-            if (!isDragging) return;
-            isDragging = false;
-            
-            const diffX = startX - currentX;
-            if (Math.abs(diffX) > 50) {
-                if (diffX > 0) {
-                    this.moveToNext();
-                } else {
-                    this.moveToPrev();
-                }
-            }
-        });
-
-        // Redimensionamiento de ventana
-        window.addEventListener('resize', () => {
-            this.visibleCards = this.getVisibleCards();
-            this.maxIndex = Math.max(0, this.totalCards - this.visibleCards);
-            this.currentIndex = Math.min(this.currentIndex, this.maxIndex);
-            this.updateSliderPosition();
-            this.updateButtons();
-            this.updateIndicators();
-        });
-    }
-
-    createIndicators() {
-        const indicatorsContainer = document.getElementById('indicators');
-        if (!indicatorsContainer) return;
-        
-        indicatorsContainer.innerHTML = '';
-        
-        const totalIndicators = this.maxIndex + 1;
-        for (let i = 0; i < totalIndicators; i++) {
-            const indicator = document.createElement('div');
-            indicator.className = 'indicator';
-            if (i === 0) indicator.classList.add('active');
-            
-            indicator.addEventListener('click', () => {
-                this.moveTo(i);
-            });
-            
-            indicatorsContainer.appendChild(indicator);
-        }
-    }
-
-    updateIndicators() {
-        const indicators = document.querySelectorAll('.indicator');
-        indicators.forEach((indicator, index) => {
-            indicator.classList.toggle('active', index === this.currentIndex);
-        });
-    }
-
-    updateSliderPosition() {
-        const translateX = -this.currentIndex * this.cardWidth;
-        this.slider.style.transform = `translateX(${translateX}px)`;
-        this.slider.style.transition = 'transform 0.3s ease';
-    }
-
-    updateButtons() {
-        const prevBtn = document.querySelector('.icons .prev-btn');
-        const nextBtn = document.querySelector('.icons .next-btn');
-        
-        if (prevBtn) prevBtn.disabled = this.currentIndex === 0;
-        if (nextBtn) nextBtn.disabled = this.currentIndex >= this.maxIndex;
-    }
-
-    moveTo(index) {
-        this.currentIndex = Math.max(0, Math.min(index, this.maxIndex));
-        this.updateSliderPosition();
-        this.updateButtons();
-        this.updateIndicators();
-    }
-
-    moveToNext() {
-        if (this.currentIndex < this.maxIndex) {
-            this.moveTo(this.currentIndex + 1);
-        }
-    }
-
-    moveToPrev() {
-        if (this.currentIndex > 0) {
-            this.moveTo(this.currentIndex - 1);
-        }
+    if (newSliderAutoplayInterval) {
+        clearInterval(newSliderAutoplayInterval);
+        newSliderAutoplayInterval = null;
     }
 }
 
-// ========== FUNCIÓN GLOBAL PARA COMPATIBILIDAD ==========
-
-let currentSlideIndex = 0;
-let SliderAutoplayInterval;
-
-
-// Función global para manejar ambos sliders
-function moveSlider(sliderId, direction) {
-    if (sliderId === 'newSlider') {
-        moveNewSlider(direction);
-    } else if (sliderId === 'iconsSlider') {
-        if (direction > 0) {
-            window.iconSlider.moveToNext();
-        } else {
-            window.iconSlider.moveToPrev();
-        }
-    }
+function updateNewSliderIndicators() {
+    const indicators = document.querySelectorAll('.whats-new .slider-indicator');
+    indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === currentNewSlideIndex);
+    });
 }
 
+// ========== FUNCIONES PARA SLIDER DE ICONOS ==========
 
-
-
-// Función para el slider "Lo mejor y lo más nuevo"
 function moveIconSlider(direction) {
     const slider = document.getElementById('iconsSlider');
+    if (!slider) return;
+    
     const slides = slider.querySelectorAll('.icon-card');
     const totalSlides = slides.length;
     
     // Actualizar índice
-   currentSlideIndex += direction;
+    currentIconSlideIndex += direction;
     
     // Loop infinito
-    if (currentSlideIndex < 0) {
-        currentSlideIndex = totalSlides - 1;
-    } else if (currentSlideIndex >= totalSlides) {
-        currentSlideIndex = 0;
+    if (currentIconSlideIndex < 0) {
+        currentIconSlideIndex = totalSlides - 1;
+    } else if (currentIconSlideIndex >= totalSlides) {
+        currentIconSlideIndex = 0;
     }
     
-    // Calcular desplazamiento
-    const slideWidth = slides[0].offsetWidth + 20; // 20px de gap
-    const offset = -currentSlideIndex * slideWidth;
+    // Calcular desplazamiento (mostrar 3 cards a la vez)
+    const cardWidth = 280; // Ancho de cada card incluyendo gap
+    const offset = -currentIconSlideIndex * cardWidth;
     
     // Aplicar transformación
     slider.style.transform = `translateX(${offset}px)`;
     slider.style.transition = 'transform 0.5s ease-in-out';
+    
+    // Actualizar indicadores si existen
+    updateIconSliderIndicators();
+    
+    console.log(`Slider Iconos - Slide actual: ${currentIconSlideIndex + 1}/${totalSlides}`);
 }
 
-// Función para resetear el slider "Lo mejor y lo más nuevo"
-function resetSlider() {
-    currentSlideIndex = 0;
+function resetIconSlider() {
+    currentIconSlideIndex = 0;
     const slider = document.getElementById('iconsSlider');
-    slider.style.transform = 'translateX(0)';
+    if (slider) {
+        slider.style.transform = 'translateX(0)';
+        slider.style.transition = 'transform 0.5s ease-in-out';
+        updateIconSliderIndicators();
+    }
 }
 
-// Autoplay para el slider "Lo mejor y lo más nuevo"
-function startSliderAutoplay() {
-    SliderAutoplayInterval = setInterval(() => {
+function startIconSliderAutoplay() {
+    stopIconSliderAutoplay(); // Detener cualquier autoplay existente
+    iconSliderAutoplayInterval = setInterval(() => {
         moveIconSlider(1);
-    }, 6000); // cada 4 segundos
+    }, 5000); // Cada 5 segundos
+    console.log('Autoplay del slider de iconos iniciado');
 }
 
-function stopSliderAutoplay() {
-    clearInterval(SliderAutoplayInterval);
+function stopIconSliderAutoplay() {
+    if (iconSliderAutoplayInterval) {
+        clearInterval(iconSliderAutoplayInterval);
+        iconSliderAutoplayInterval = null;
+    }
 }
 
+function updateIconSliderIndicators() {
+    const indicators = document.querySelectorAll('.icons .indicator');
+    indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === currentIconSlideIndex);
+    });
+}
 
+// ========== FUNCIÓN GLOBAL PARA COMPATIBILIDAD ==========
 
-
-
-
-
-
-
+function moveSlider(sliderId, direction) {
+    if (sliderId === 'newSlider') {
+        moveNewSlider(direction);
+    } else if (sliderId === 'iconsSlider') {
+        moveIconSlider(direction);
+    }
+}
 
 // ========== EFECTOS HOVER Y ANIMACIONES ==========
 
-// Efectos hover en cards
 function setupHoverEffects() {
     // Animaciones para tarjetas de eventos
     document.querySelectorAll('.event-card').forEach(card => {
@@ -395,7 +258,9 @@ function setupTouchNavigation() {
     let touchEndX = 0;
     
     const newSlider = document.getElementById('newSlider');
+    const iconSlider = document.getElementById('iconsSlider');
     
+    // Touch para slider principal
     if (newSlider) {
         newSlider.addEventListener('touchstart', e => {
             touchStartX = e.changedTouches[0].screenX;
@@ -407,23 +272,55 @@ function setupTouchNavigation() {
         });
     }
     
+    // Touch para slider de iconos
+    if (iconSlider) {
+        iconSlider.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+        
+        iconSlider.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleIconSliderSwipe();
+        });
+    }
+    
     function handleNewSliderSwipe() {
-        if (touchEndX < touchStartX) {
-            moveNewSlider(1); // Deslizar a la izquierda
+        const swipeThreshold = 50;
+        if (Math.abs(touchEndX - touchStartX) > swipeThreshold) {
+            if (touchEndX < touchStartX) {
+                moveNewSlider(1); // Deslizar a la izquierda
+            } else {
+                moveNewSlider(-1); // Deslizar a la derecha
+            }
         }
-        if (touchEndX > touchStartX) {
-            moveNewSlider(-1); // Deslizar a la derecha
+    }
+    
+    function handleIconSliderSwipe() {
+        const swipeThreshold = 50;
+        if (Math.abs(touchEndX - touchStartX) > swipeThreshold) {
+            if (touchEndX < touchStartX) {
+                moveIconSlider(1); // Deslizar a la izquierda
+            } else {
+                moveIconSlider(-1); // Deslizar a la derecha
+            }
         }
     }
 }
 
 // ========== FUNCIONES AUXILIARES ==========
 
-// Función para alternar menú móvil
-function toggleMobileMenu() {
-    const mobileMenu = document.querySelector('.mobile-menu');
-    if (mobileMenu) {
-        mobileMenu.classList.toggle('active');
+// Modal functions
+function mostrarMensaje() {
+    const modal = document.getElementById('modalMensaje');
+    if (modal) {
+        modal.style.display = 'block';
+    }
+}
+
+function cerrarModal() {
+    const modal = document.getElementById('modalMensaje');
+    if (modal) {
+        modal.style.display = 'none';
     }
 }
 
@@ -441,36 +338,23 @@ function performSearch() {
     return false;
 }
 
-// Modal functions
-function mostrarMensaje() {
-    const modal = document.getElementById('modalMensaje');
-    if (modal) {
-        modal.style.display = 'block';
-    }
-}
-
-function cerrarModal() {
-    const modal = document.getElementById('modalMensaje');
-    if (modal) {
-        modal.style.display = 'none';
-    }
-}
-
 // ========== INICIALIZACIÓN ==========
 
-// Inicialización cuando se carga la página
 document.addEventListener('DOMContentLoaded', function() {
-    // Inicializar slider de iconos
-    window.iconSlider = new IconSlider('iconsSlider');
-    
     // Configurar efectos hover
     setupHoverEffects();
     
     // Configurar navegación táctil
     setupTouchNavigation();
     
-    // Inicializar autoplay para el slider principal
-    startNewSliderAutoplay();
+    // Iniciar autoplay automático para ambos sliders
+    setTimeout(() => {
+        startNewSliderAutoplay();
+    }, 1000); // Iniciar después de 1 segundo
+    
+    setTimeout(() => {
+        startIconSliderAutoplay();
+    }, 2000); // Iniciar después de 2 segundos (offset)
     
     // Configurar evento de búsqueda
     const searchIcon = document.querySelector('.search-box i');
@@ -505,16 +389,16 @@ document.addEventListener('DOMContentLoaded', function() {
             cerrarModal();
         }
     });
+    
+    console.log('Sistema de sliders automáticos inicializado correctamente');
 });
 
 // ========== EVENT LISTENERS ==========
 
 // Ajustar sliders al cambiar el tamaño de la ventana
 window.addEventListener('resize', () => {
-    // Resetear slider principal
-    resetNewSlider();
-    
-    // El slider de iconos se ajusta automáticamente en su clase
+    // Los sliders mantienen su posición actual
+    console.log('Ventana redimensionada - sliders ajustados');
 });
 
 // Animación de navbar al hacer scroll
@@ -530,16 +414,31 @@ window.addEventListener('scroll', function() {
         }
     }
     
-    // Llamar a la función de scroll del header
     handleScroll();
 });
 
-// Asegurar que el slider se inicialice correctamente después de cargar completamente
-window.addEventListener('load', () => {
-    // Resetear posición del slider principal
-    resetNewSlider();
-    
-    // Reiniciar autoplay
+// Limpiar intervalos al cerrar la página
+window.addEventListener('beforeunload', () => {
     stopNewSliderAutoplay();
-    startNewSliderAutoplay();
+    stopIconSliderAutoplay();
+});
+
+// Pausar autoplay cuando el usuario interactúa con los sliders
+document.addEventListener('click', function(e) {
+    if (e.target.closest('.slider-btn')) {
+        // Si el usuario hace clic en los botones del slider, pausar temporalmente
+        const sliderId = e.target.closest('.slider-container').querySelector('.slider, .icons-slider').id;
+        
+        if (sliderId === 'newSlider') {
+            stopNewSliderAutoplay();
+            setTimeout(() => {
+                startNewSliderAutoplay();
+            }, 10000); // Reanudar después de 10 segundos
+        } else if (sliderId === 'iconsSlider') {
+            stopIconSliderAutoplay();
+            setTimeout(() => {
+                startIconSliderAutoplay();
+            }, 10000); // Reanudar después de 10 segundos
+        }
+    }
 });
