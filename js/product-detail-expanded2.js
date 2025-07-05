@@ -95,18 +95,18 @@ document.addEventListener('DOMContentLoaded', function() {
       colors: [
         {
           name: 'Black/White',
-          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/nike-hoodie-black.png',
+          image: './img-mujer/camisa-mujer.png',
           colorCode: '#000000'
         },
         {
           name: 'Grey Heather',
-          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/nike-hoodie-grey.png',
+          image: './img-mujer/camisa-mujer-blackwhite.png',
           colorCode: '#808080'
         }
       ],
       images: [
-        'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/nike-hoodie-black.png',
-        'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/nike-hoodie-grey.png'
+        './img-mujer/camisa-mujer-blackwhite.png',
+        './img-mujer/camisa-mujer.png'
       ],
       sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
       sizeType: 'letter',
