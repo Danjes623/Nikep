@@ -326,6 +326,29 @@ document.addEventListener('DOMContentLoaded', function() {
       features: ['Diseño clásico', 'Cómodo para uso diario', 'Leyenda del running'],
       inStock: true
     },
+     'camisa-mujer': {
+      id: 'camisa-mujer',
+      name: 'Camisa Deportiva',
+      category: 'Camisa - Mujer',
+      price: 59.99,
+      originalPrice: null,
+      colors: [
+        {
+          name: 'White/Varsity Red/Varsity Royal',
+          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/cortez-classic.png',
+          colorCode: '#FFFFFF'
+        },
+        {
+          name: 'Black/White',
+          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/cortez-black.png',
+          colorCode: '#000000'
+        }
+      ],
+      sizes: ['XS', 'S', 'M', 'L', 'XL'],
+      description: 'Nike Sportswear Chill Knit es un ícono del running que se convirtió en un clásico del streetwear.',
+      features: ['Diseño clásico', 'Cómodo para uso diario', 'Leyenda del running'],
+      inStock: true
+    },
   };
 
 
