@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
     },
 
 
-    'NIKEPEGASUS41': {
+    'nikep41': {
       id: 'nikep41',
       name: 'Nike Pegasus 41',
       category: 'Zapatos - Mujer',
@@ -130,14 +130,14 @@ document.addEventListener('DOMContentLoaded', function() {
           name: 'Black/White',
           image: './img-mujer/pegasus41.png',
           colorCode: '#000000'
-        },
+        }
 
       ],
       images: [
         './img-mujer/pegasus41.png',
         
       ],
-       sizes: ['36', '37', '38', '39', '40', '41', '42'],
+      sizes: ['36', '37', '38', '39', '40', '41', '42'],
       sizeType: 'numeric',
       description: 'Sudadera con capucha de felpa suave y cómoda para uso diario.',
       features: ['Felpa suave', 'Capucha ajustable', 'Bolsillo canguro'],
