@@ -344,7 +344,7 @@ document.addEventListener('DOMContentLoaded', function() {
           colorCode: '#000000'
         }
       ],
-      sizes: ['XS', 'S', 'M', 'L', 'XL'],
+      sizes2: ['XS', 'S', 'M', 'L', 'XL'],
       description: 'Nike Sportswear Chill Knit es un ícono del running que se convirtió en un clásico del streetwear.',
       features: ['Diseño clásico', 'Cómodo para uso diario', 'Leyenda del running'],
       inStock: true
@@ -419,6 +419,21 @@ document.addEventListener('DOMContentLoaded', function() {
         sizeContainer.appendChild(sizeButton);
       });
     }
+
+
+const sizeContainer2 = document.querySelector('.size-options');
+    if (sizeContainer2) {
+      sizeContainer2.innerHTML = '';
+      currentProduct.sizes2.forEach(size => {
+        const sizeButton2 = document.createElement('button');
+        sizeButton2.className = 'size-button';
+        sizeButton2.textContent = size;
+        sizeContainer2.appendChild(sizeButton2);
+      });
+    }
+
+
+
 
     // Actualizar descripción con características
     if (document.querySelector('.product-description')) {
