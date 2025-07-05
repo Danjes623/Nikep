@@ -363,7 +363,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         {
           name: 'Black/White',
-          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/cortez-black.png',
+          image: './imagenes/NIKE P6000.png',
           colorCode: '#000000'
         }
       ],
