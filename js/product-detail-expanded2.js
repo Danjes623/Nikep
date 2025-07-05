@@ -121,30 +121,32 @@ document.addEventListener('DOMContentLoaded', function() {
 
     'nikep41': {
       id: 'nikep41',
-      name: 'Nike Pegasus 41',
-      category: 'Zapatos - Mujer',
-      price: 299.99,
+      name: 'Nike Sudadera con Capucha',
+      category: 'Sudadera - Unisex',
+      price: 79.99,
       originalPrice: null,
       colors: [
         {
           name: 'Black/White',
-          image: './img-mujer/pegasus41.png',
+          image: './img-mujer/camisa-mujer.png',
           colorCode: '#000000'
+        },
+        {
+          name: 'Grey Heather',
+          image: './img-mujer/camisa-mujer-blackwhite.png',
+          colorCode: '#808080'
         }
-
       ],
       images: [
-        './img-mujer/pegasus41.png',
-        
+        './img-mujer/camisa-mujer-blackwhite.png',
+        './img-mujer/camisa-mujer.png'
       ],
-      sizes: ['36', '37', '38', '39', '40', '41', '42'],
-      sizeType: 'numeric',
+      sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+      sizeType: 'letter',
       description: 'Sudadera con capucha de felpa suave y cómoda para uso diario.',
       features: ['Felpa suave', 'Capucha ajustable', 'Bolsillo canguro'],
       inStock: true
     },
-
-
 
 
      /*PRODUCTOS SECCION MUJERES */
