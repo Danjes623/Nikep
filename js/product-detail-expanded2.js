@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     'NIKEPEGASUS41': {
-      id: 'NIKEP41',
+      id: 'nikep41',
       name: 'Nike Pegasus 41',
       category: 'Zapatos - Mujer',
       price: 299.99,
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
           image: './img-mujer/pegasus41.png',
           colorCode: '#000000'
         },
-        
+
       ],
       images: [
         './img-mujer/pegasus41.png',
