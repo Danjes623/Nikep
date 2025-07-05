@@ -301,20 +301,20 @@ function moveIconSlider(direction) {
 }
 
 // Función para resetear el slider "Lo mejor y lo más nuevo"
-function resetNewSlider() {
+function resetSlider() {
     currentSlideIndex = 0;
     const slider = document.getElementById('iconsSlider');
     slider.style.transform = 'translateX(0)';
 }
 
 // Autoplay para el slider "Lo mejor y lo más nuevo"
-function startNewSliderAutoplay() {
+function startSliderAutoplay() {
     SliderAutoplayInterval = setInterval(() => {
         moveNewSlider(1);
     }, 6000); // cada 4 segundos
 }
 
-function stopNewSliderAutoplay() {
+function stopSliderAutoplay() {
     clearInterval(SliderAutoplayInterval);
 }
 
