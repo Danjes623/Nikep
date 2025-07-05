@@ -255,6 +255,10 @@ class IconSlider {
 
 // ========== FUNCIÓN GLOBAL PARA COMPATIBILIDAD ==========
 
+let currentSlideIndex = 0;
+let SliderAutoplayInterval;
+
+
 // Función global para manejar ambos sliders
 function moveSlider(sliderId, direction) {
     if (sliderId === 'newSlider') {
@@ -267,6 +271,61 @@ function moveSlider(sliderId, direction) {
         }
     }
 }
+
+
+
+
+// Función para el slider "Lo mejor y lo más nuevo"
+function moveIconSlider(direction) {
+    const slider = document.getElementById('iconsSlider');
+    const slides = slider.querySelectorAll('.icon-card');
+    const totalSlides = slides.length;
+    
+    // Actualizar índice
+   currentSlideIndex += direction;
+    
+    // Loop infinito
+    if (currentSlideIndex < 0) {
+        currentSlideIndex = totalSlides - 1;
+    } else if (currentSlideIndex >= totalSlides) {
+        currentSlideIndex = 0;
+    }
+    
+    // Calcular desplazamiento
+    const slideWidth = slides[0].offsetWidth + 20; // 20px de gap
+    const offset = -currentSlideIndex * slideWidth;
+    
+    // Aplicar transformación
+    slider.style.transform = `translateX(${offset}px)`;
+    slider.style.transition = 'transform 0.5s ease-in-out';
+}
+
+// Función para resetear el slider "Lo mejor y lo más nuevo"
+function resetNewSlider() {
+    currentSlideIndex = 0;
+    const slider = document.getElementById('iconsSlider');
+    slider.style.transform = 'translateX(0)';
+}
+
+// Autoplay para el slider "Lo mejor y lo más nuevo"
+function startNewSliderAutoplay() {
+    SliderAutoplayInterval = setInterval(() => {
+        moveNewSlider(1);
+    }, 6000); // cada 4 segundos
+}
+
+function stopNewSliderAutoplay() {
+    clearInterval(SliderAutoplayInterval);
+}
+
+
+
+
+
+
+
+
+
 
 // ========== EFECTOS HOVER Y ANIMACIONES ==========
 
