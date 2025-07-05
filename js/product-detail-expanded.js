@@ -358,7 +358,7 @@ document.addEventListener('DOMContentLoaded', function() {
       colors: [
         {
           name: 'White/Varsity Red/Varsity Royal',
-          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/cortez-classic.png',
+          image: './imagenes/NIKE P6000.png',
           colorCode: '#FFFFFF'
         },
         {
