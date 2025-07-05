@@ -86,6 +86,9 @@ document.addEventListener('DOMContentLoaded', function() {
       features: ['Tecnología Shox', 'Amortiguación superior', 'Diseño futurista'],
       inStock: true
     },
+
+
+    /*PRODUCTOS SECCION MUJERES */
     'camisa-mujer': {
       id: 'camisa-mujer',
       name: 'Nike Sudadera con Capucha',
@@ -114,6 +117,39 @@ document.addEventListener('DOMContentLoaded', function() {
       features: ['Felpa suave', 'Capucha ajustable', 'Bolsillo canguro'],
       inStock: true
     },
+
+
+    'NIKEPEGASUS41': {
+      id: 'NIKEP41',
+      name: 'Nike Pegasus 41',
+      category: 'Zapatos - Mujer',
+      price: 299.99,
+      originalPrice: null,
+      colors: [
+        {
+          name: 'Black/White',
+          image: './img-mujer/pegasus41.png',
+          colorCode: '#000000'
+        },
+        
+      ],
+      images: [
+        './img-mujer/pegasus41.png',
+        
+      ],
+       sizes: ['36', '37', '38', '39', '40', '41', '42'],
+      sizeType: 'numeric',
+      description: 'Sudadera con capucha de felpa suave y cómoda para uso diario.',
+      features: ['Felpa suave', 'Capucha ajustable', 'Bolsillo canguro'],
+      inStock: true
+    },
+
+
+
+
+     /*PRODUCTOS SECCION MUJERES */
+
+
     'nike-t-shirt': {
       id: 'nike-t-shirt',
       name: 'Nike Dri-FIT T-Shirt',
