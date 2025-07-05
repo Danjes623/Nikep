@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
     },
 
 
-    /*PRODUCTOS SECCION MUJERES */
+    
     'camisa-mujer': {
       id: 'camisa-mujer',
       name: 'Nike Sudadera con Capucha',
@@ -117,41 +117,6 @@ document.addEventListener('DOMContentLoaded', function() {
       features: ['Felpa suave', 'Capucha ajustable', 'Bolsillo canguro'],
       inStock: true
     },
-
-
-    'nikep41': {
-      id: 'nikep41',
-      name: 'Nike Sudadera con Capucha',
-      category: 'Sudadera - Unisex',
-      price: 79.99,
-      originalPrice: null,
-      colors: [
-        {
-          name: 'Black/White',
-          image: './img-mujer/camisa-mujer.png',
-          colorCode: '#000000'
-        },
-        {
-          name: 'Grey Heather',
-          image: './img-mujer/camisa-mujer-blackwhite.png',
-          colorCode: '#808080'
-        }
-      ],
-      images: [
-        './img-mujer/camisa-mujer-blackwhite.png',
-        './img-mujer/camisa-mujer.png'
-      ],
-      sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
-      sizeType: 'letter',
-      description: 'Sudadera con capucha de felpa suave y cómoda para uso diario.',
-      features: ['Felpa suave', 'Capucha ajustable', 'Bolsillo canguro'],
-      inStock: true
-    },
-
-
-     /*PRODUCTOS SECCION MUJERES */
-
-
     'nike-t-shirt': {
       id: 'nike-t-shirt',
       name: 'Nike Dri-FIT T-Shirt',
