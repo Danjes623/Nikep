@@ -163,6 +163,70 @@ document.addEventListener('DOMContentLoaded', function() {
       inStock: true
     },
     // Productos existentes con tallas numéricas
+
+
+   'field-general': {
+      id: 'field-general',
+      name: 'Nike Field General',
+      category: 'Zapatillas - Mujer',
+      price: 99.99,
+      originalPrice: null,
+      colors: [
+        {
+          name: 'Elemental Pink/Gum Medium Brown/Obsidian',
+          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/12a56561-8431-4a91-8bd9-a2929ba5baad/air-force-1-07-zapatillas-GjGXSP.png',
+          colorCode: '#FFB6C1'
+        }
+      ],
+      sizes: ['36', '37', '38', '39', '40', '41', '42'],
+      description: 'Las Nike Field General ofrecen un diseño versátil y cómodo para tu día a día.',
+      features: ['Transpirable', 'Suela de goma', 'Diseño clásico'],
+      inStock: true
+    },
+    'air-force-1': {
+      id: 'air-force-1',
+      name: 'Nike Air Force 1 Low Premium',
+      category: 'Zapatillas - Mujer',
+      price: 129.99,
+      originalPrice: 149.99,
+      colors: [
+        {
+          name: 'Light Bone/Kelly Green/Pink Foam/Light Bone',
+          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/36a7ac0b-dfea-4ce9-b6c9-58b9b13a1522/air-force-1-07-lx-zapatillas-bkTs6J.png',
+          colorCode: '#F5F5DC'
+        },
+        {
+          name: 'White/Black',
+          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/f4e6c1c9-5f8a-4c3a-8f1a-2b3c4d5e6f7g/air-force-1-white-black.png',
+          colorCode: '#FFFFFF'
+        }
+      ],
+      sizes: ['35.5', '36', '37', '38', '39', '40', '41', '42', '43'],
+      description: 'Las Nike Air Force 1 Low elevan su leyenda con un toque de brillo.',
+      features: ['Air Sole', 'Cuero premium', 'Icónico desde 1982'],
+      inStock: true
+    },
+    'shox-r4': {
+      id: 'shox-r4',
+      name: 'Nike Shox R4',
+      category: 'Zapatillas - Mujer',
+      price: 149.99,
+      originalPrice: null,
+      colors: [
+        {
+          name: 'Black/Black',
+          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/f7981197-5846-4e06-90e4-ed9f5a467501/shox-r4-zapatillas-qsfXpZ.png',
+          colorCode: '#000000'
+        }
+      ],
+      sizes: ['36', '37', '38', '39', '40', '41', '42'],
+      description: 'Las Nike Shox R4 vuelven con su icónico diseño y tecnología de amortiguación.',
+      features: ['Tecnología Shox', 'Amortiguación superior', 'Diseño futurista'],
+      inStock: true
+    },
+    // ================================
+    // NUEVOS PRODUCTOS AGREGADOS
+    // ================================
     'air-max-plus': {
       id: 'air-max-plus',
       name: 'Nike Air Max Plus',
@@ -182,7 +246,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       ],
       sizes: ['39', '40', '41', '42', '43', '44', '45', '46'],
-      sizeType: 'numeric',
       description: 'El Nike Air Max plus mantiene el alma rebelde del original con detalles premium.',
       features: ['Air Max visible', 'Amortiguación Air', 'Diseño icónico de los 90'],
       inStock: true
@@ -211,7 +274,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       ],
       sizes: ['36', '37', '38', '39', '40', '41', '42', '43', '44', '45'],
-      sizeType: 'numeric',
       description: 'Creado para la cancha pero adoptado por las calles, el Nike Dunk Low retorna.',
       features: ['Cuero premium', 'Suela de goma', 'Estilo retro basketball'],
       inStock: true
@@ -259,7 +321,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       ],
       sizes: ['35.5', '36', '37', '38', '39', '40', '41', '42'],
-      sizeType: 'numeric',
       description: 'Un clásico del basketball que celebra su herencia vintage con un toque moderno.',
       features: ['Estilo vintage', 'Suela de goma', 'Diseño mid-top'],
       inStock: false
@@ -287,8 +348,153 @@ document.addEventListener('DOMContentLoaded', function() {
       description: 'El Nike Cortez es un ícono del running que se convirtió en un clásico del streetwear.',
       features: ['Diseño clásico', 'Cómodo para uso diario', 'Leyenda del running'],
       inStock: true
-    }
+    },
+    'P6000': {
+      id: 'P6000',
+      name: 'Nike P6000 SE',
+      category: 'Zapatillas - Hombre',
+      price: 309.00,
+      originalPrice: null,
+      colors: [
+        {
+          name: 'White/Varsity Red/Varsity Royal',
+          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/cortez-classic.png',
+          colorCode: '#FFFFFF'
+        },
+        {
+          name: 'Black/White',
+          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/cortez-black.png',
+          colorCode: '#000000'
+        }
+      ],
+      sizes: ['39', '40', '41', '42', '43', '44', '45'],
+      sizeType: 'numeric',
+      description: 'El Nike Cortez es un ícono del running que se convirtió en un clásico del streetwear.',
+      features: ['Diseño clásico', 'Cómodo para uso diario', 'Leyenda del running'],
+      inStock: true
+    },
+    'nike-shox-tl': {
+      id: 'nike-shox-tl',
+      name: 'Nike Shox TL',
+      category: 'Zapatillas - Hombre',
+      price: 189.99,
+      originalPrice: null,
+      colors: [
+        {
+          name: 'White/Varsity Red/Varsity Royal',
+          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/cortez-classic.png',
+          colorCode: '#FFFFFF'
+        },
+        {
+          name: 'Black/White',
+          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/cortez-black.png',
+          colorCode: '#000000'
+        }
+      ],
+      sizes: ['39', '40', '41', '42', '43', '44', '45'],
+      sizeType: 'numeric',
+      description: 'El Nike Shox TL es un ícono del running que se convirtió en un clásico del streetwear.',
+      features: ['Diseño clásico', 'Cómodo para uso diario', 'Leyenda del running'],
+      inStock: true
+    },
+    'pegasus41': {
+      id: 'pegasus41',
+      name: 'Nike Pegasus 41',
+      category: 'Zapatillas - Hombre',
+      price: 129.99,
+      originalPrice: null,
+      colors: [
+        {
+          name: 'White/Varsity Red/Varsity Royal',
+          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/cortez-classic.png',
+          colorCode: '#FFFFFF'
+        },
+        {
+          name: 'Black/White',
+          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/cortez-black.png',
+          colorCode: '#000000'
+        }
+      ],
+      sizes: ['39', '40', '41', '42', '43', '44', '45'],
+      sizeType: 'numeric',
+      description: 'Nike Pegasus 41 es un ícono del running que se convirtió en un clásico del streetwear.',
+      features: ['Diseño clásico', 'Cómodo para uso diario', 'Leyenda del running'],
+      inStock: true
+    },
+    'nike-mercurial': {
+      id: 'nike-mercurial',
+      name: 'Nike Mercurial Vapor XI Elite y Air Max 95 SE',
+      category: 'Zapatillas - Hombre',
+      price: 134.97,
+      originalPrice: 179.97,
+      colors: [
+        {
+          name: 'White/Varsity Red/Varsity Royal',
+          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/cortez-classic.png',
+          colorCode: '#FFFFFF'
+        },
+        {
+          name: 'Black/White',
+          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/cortez-black.png',
+          colorCode: '#000000'
+        }
+      ],
+      sizes: ['39', '40', '41', '42', '43', '44', '45'],
+      sizeType: 'numeric',
+      description: 'Nike Mercurial Vapor XI Elite y Air Max 95 SE es un ícono del running que se convirtió en un clásico del streetwear.',
+      features: ['Diseño clásico', 'Cómodo para uso diario', 'Leyenda del running'],
+      inStock: true
+    },
+    'nike-portal': {
+      id: 'nike-portal',
+      name: 'Nike Air Max Portal',
+      category: 'Zapatillas - Hombre',
+      price: 93.49,
+      originalPrice: 109.99,
+      colors: [
+        {
+          name: 'White/Varsity Red/Varsity Royal',
+          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/cortez-classic.png',
+          colorCode: '#FFFFFF'
+        },
+        {
+          name: 'Black/White',
+          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/cortez-black.png',
+          colorCode: '#000000'
+        }
+      ],
+      sizes: ['39', '40', '41', '42', '43', '44', '45'],
+      sizeType: 'numeric',
+      description: 'Nike Air Max Portal es un ícono del running que se convirtió en un clásico del streetwear.',
+      features: ['Diseño clásico', 'Cómodo para uso diario', 'Leyenda del running'],
+      inStock: true
+    },
+    'nike-wear': {
+      id: 'nike-wear',
+      name: 'Nike Sportswear Chill Knit',
+      category: 'Zapatillas - Hombre',
+      price: 59.99,
+      originalPrice: null,
+      colors: [
+        {
+          name: 'White/Varsity Red/Varsity Royal',
+          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/cortez-classic.png',
+          colorCode: '#FFFFFF'
+        },
+        {
+          name: 'Black/White',
+          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/cortez-black.png',
+          colorCode: '#000000'
+        }
+      ],
+      sizes: ['39', '40', '41', '42', '43', '44', '45'],
+      sizeType: 'numeric',
+      description: 'Nike Sportswear Chill Knit es un ícono del running que se convirtió en un clásico del streetwear.',
+      features: ['Diseño clásico', 'Cómodo para uso diario', 'Leyenda del running'],
+      inStock: true
+    },
   };
+
 
   // Get current product ID from URL
   const urlParams = new URLSearchParams(window.location.search);
