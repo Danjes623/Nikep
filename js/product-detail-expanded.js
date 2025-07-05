@@ -71,10 +71,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // ================================
     // NUEVOS PRODUCTOS CON TALLAS DE LETRAS
     // ================================
-    'nike-hoodie': {
-      id: 'nike-hoodie',
-      name: 'Nike Sportswear Club Fleece',
-      category: 'Sudadera - Unisex',
+    'camisa-mujer': {
+      id: 'camisa-mujer',
+      name: 'Nike camisa-mujer',
+      category: 'Camisa - Unisex',
       price: 79.99,
       originalPrice: null,
       colors: [
