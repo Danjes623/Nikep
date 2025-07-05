@@ -310,7 +310,7 @@ function resetSlider() {
 // Autoplay para el slider "Lo mejor y lo más nuevo"
 function startSliderAutoplay() {
     SliderAutoplayInterval = setInterval(() => {
-        moveNewSlider(1);
+        moveIconSlider(1);
     }, 6000); // cada 4 segundos
 }
 
