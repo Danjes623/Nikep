@@ -369,7 +369,7 @@ document.addEventListener('DOMContentLoaded', function() {
       colors: [
         {
           name: 'Black/White',
-          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/air-max-plus-black.png',
+          image: './imagenes/nike aire.png',
           colorCode: '#000000'
         },
         {
