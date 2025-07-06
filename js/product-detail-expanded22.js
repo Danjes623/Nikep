@@ -42,21 +42,11 @@ document.addEventListener('DOMContentLoaded', function() {
           image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/36a7ac0b-dfea-4ce9-b6c9-58b9b13a1522/air-force-1-07-lx-zapatillas-bkTs6J.png',
           colorCode: '#F5F5DC'
         },
-        {
-          name: 'White/Black',
-          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/f4e6c1c9-5f8a-4c3a-8f1a-2b3c4d5e6f7g/air-force-1-white-black.png',
-          colorCode: '#FFFFFF'
-        }
+        
       ],
       images: [
         'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/36a7ac0b-dfea-4ce9-b6c9-58b9b13a1522/air-force-1-07-lx-zapatillas-bkTs6J.png',
-        'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/66963512-d550-4b46-bd28-169be08c019c/air-force-1-07-lx-zapatillas-bkTs6J.png',
-        'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/0a906a91-8dc1-4b1a-9d95-af30e8e33698/air-force-1-07-lx-zapatillas-bkTs6J.png',
-        'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/ede6b3e5-c1c1-463c-a0b7-12be8c81f21f/air-force-1-07-lx-zapatillas-bkTs6J.png',
-        'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/a6e32302-4e48-4e85-b1a1-afb35ecfd2a9/air-force-1-07-lx-zapatillas-bkTs6J.png',
-        'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/87c53040-3f54-493a-9d67-34f81d6d797c/air-force-1-07-lx-zapatillas-bkTs6J.png',
-        'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/e3cc8d6e-1da8-4cbf-8a15-0e92c9baa621/air-force-1-07-lx-zapatillas-bkTs6J.png',
-        'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/5c0d93ba-bcd5-4c78-bf51-9b51b1f43c1e/air-force-1-07-lx-zapatillas-bkTs6J.png'
+        
       ],
       sizes: ['35.5', '36', '37', '38', '39', '40', '41', '42', '43'],
       sizeType: 'numeric',
@@ -334,19 +324,18 @@ document.addEventListener('DOMContentLoaded', function() {
       colors: [
         {
           name: 'White/Metallic Silver',
-          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/v2k-run-white.png',
+          image: '/imagenes/v2h run.png',
           colorCode: '#FFFFFF'
         },
         {
           name: 'Phantom/Light Bone',
-          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/v2k-run-phantom.png',
+          image: '/imagenes/v2k.png',
           colorCode: '#F5F5DC'
         }
       ],
       images: [
         'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/v2k-run-white.png',
         'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/v2k-run-side.png',
-        'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/v2k-run-back.png'
       ],
       sizes: ['36', '37', '38', '39', '40', '41', '42', '43'],
       sizeType: 'numeric',
