@@ -334,8 +334,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       ],
       images: [
-        'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/v2k-run-white.png',
-        'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/v2k-run-side.png',
+        './imagenes/v2h run.png',
+        './imagenes/v2k.png',
       ],
       sizes: ['36', '37', '38', '39', '40', '41', '42', '43'],
       sizeType: 'numeric',
