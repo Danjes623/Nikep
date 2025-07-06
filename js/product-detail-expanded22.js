@@ -282,7 +282,7 @@ document.addEventListener('DOMContentLoaded', function() {
       colors: [
         {
           name: 'Midnight Navy/White',
-          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/pegasus-41-navy.png',
+          image: './imagenes/nike pegasusu.png',
           colorCode: '#191970'
         },
         {
