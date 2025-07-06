@@ -324,12 +324,12 @@ document.addEventListener('DOMContentLoaded', function() {
       colors: [
         {
           name: 'White/Metallic Silver',
-          image: '/imagenes/v2h run.png',
+          image: './imagenes/v2h run.png',
           colorCode: '#FFFFFF'
         },
         {
           name: 'Phantom/Light Bone',
-          image: '/imagenes/v2k.png',
+          image: './imagenes/v2k.png',
           colorCode: '#F5F5DC'
         }
       ],
