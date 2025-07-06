@@ -256,16 +256,10 @@ document.addEventListener('DOMContentLoaded', function() {
           image: './img-mujer/FreeMeetcon.png',
           colorCode: '#000000'
         },
-        {
-          name: 'White/Black',
-          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/free-metcon-6-white.png',
-          colorCode: '#FFFFFF'
-        }
+       
       ],
       images: [
-        'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/free-metcon-6-black.png',
-        'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/free-metcon-6-side.png',
-        'https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/free-metcon-6-back.png'
+        './img-mujer/FreeMeetcon.png',
       ],
       sizes: ['36', '37', '38', '39', '40', '41', '42', '43'],
       sizeType: 'numeric',
