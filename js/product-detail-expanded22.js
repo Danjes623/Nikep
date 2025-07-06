@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', function() {
       colors: [
         {
           name: 'Black/White/Volt',
-          image: 'https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/free-metcon-6-black.png',
+          image: './img-mujer/FreeMeetcon.png',
           colorCode: '#000000'
         },
         {
